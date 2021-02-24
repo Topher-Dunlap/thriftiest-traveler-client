@@ -29,12 +29,12 @@ export default function SwitchNavRoutes() {
                 component={Login}
             />
             <Route
-                path='/register'
-                component={Register}
-            />
-            <Route
                 path='/saved'
                 component={Saved}
+            />
+            <Route
+                path='/register'
+                component={Register}
             />
             <Route
                 component={NotFoundPage}

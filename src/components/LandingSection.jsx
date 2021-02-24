@@ -14,11 +14,11 @@ export default function LandingSection(props) {
     )
 }
 
-const imgStyle = {
-    height: "100%",
-    width: "100%",
-    margin: "0",
-}
+// const imgStyle = {
+//     height: "100%",
+//     width: "100%",
+//     margin: "0",
+// }
 
 const sectionPara = {
     margin: "4rem 2rem",

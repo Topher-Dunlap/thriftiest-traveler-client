@@ -57,6 +57,7 @@ const headerStyle = {
 const topNav = {
     backgroundColor: "#f7c841",
     display: "flex",
+    width: "auto%",
 }
 
 const topNavLeft = {
