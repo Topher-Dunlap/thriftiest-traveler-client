@@ -1,6 +1,8 @@
 import React from 'react';
-import disaster_1 from '../img/disaster_1.jpg'
+import disaster_1 from '../img/disaster_1.jpg';
+import IconButton from '@material-ui/core/IconButton';
 import {BsBookmarkPlus} from "react-icons/bs";
+import {IoMdAirplane} from "react-icons/io";
 
 export default function FreshDealResults() {
 
@@ -13,9 +15,12 @@ export default function FreshDealResults() {
                     src={disaster_1}/>
                 <div>
                     <h3 style={locationNameFloat}>Flights To Peru</h3>
-                    <BsBookmarkPlus
-                        size={40}
-                        style={iconFloat}/>
+                    <IconButton style={iconBookFloat}>
+                        <BsBookmarkPlus size={40}/>
+                    </IconButton>
+                    <IconButton style={iconFlight}>
+                        <IoMdAirplane size={40}/>
+                    </IconButton>
                 </div>
                 <div style={clearFloat}>
                     <h2 style={headerStyle}>$100</h2>
@@ -51,9 +56,14 @@ const locationNameFloat = {
     float: "left",
 }
 
-const iconFloat = {
+const iconBookFloat = {
     float: "right",
-    margin: "2rem 2rem .5rem",
+    margin: "2rem 2rem .5rem 0rem",
+}
+
+const iconFlight = {
+    float: "right",
+    margin: "2rem 0 0 0",
 }
 
 const reviewHeaderMargin = {

@@ -1,6 +1,7 @@
 import React from 'react';
-import disaster_1 from '../img/disaster_1.jpg'
+import disaster_1 from '../img/disaster_1.jpg';
 import {IoMdAirplane} from "react-icons/io";
+import IconButton from '@material-ui/core/IconButton';
 
 
 export default function Saved() {
@@ -15,15 +16,15 @@ export default function Saved() {
                 <div style={{float: "left"}}>
                     <div>
                         <h3 style={locationNameFloat}>Peru</h3>
-                        <IoMdAirplane
-                            size={40}
-                            style={iconFloat}/>
+                        <IconButton style={iconFloat}>
+                            <IoMdAirplane size={40}/>
+                        </IconButton>
                     </div>
                     <div style={infoStyle}>
                         <h2 style={headerStyle}>$100</h2>
                         <p style={dateStyle}>Feb 24 - 28</p>
                         <br/>
-                        <p style={reviewHeaderMargin}>
+                        <p style={descStyle}>
                             Peru has recently experienced a massive earthquake and plane tickets are
                             plummeting as tourists avoid traveling to the area. While some resources for
                             travelers may be inaccessible it's still possible to visit this location and experience
@@ -51,7 +52,7 @@ const locationNameFloat = {
 
 const iconFloat = {
     float: "right",
-    margin: "0rem 2rem .5rem",
+    margin: "0rem 0rem 2rem .5rem",
 }
 
 const infoStyle = {
@@ -59,12 +60,12 @@ const infoStyle = {
     // borderWidth: "1px",
 }
 
-const reviewHeaderMargin = {
-    margin: "2rem 2rem .5rem"
+const descStyle = {
+    margin: "0rem 0rem 2rem 2rem",
 }
 
 const headerStyle = {
-    margin: "2rem 2rem 0",
+    margin: "2rem 0 0 2rem",
     fontSize: "2.5rem",
 }
 
