@@ -8,20 +8,15 @@ export default function Deals() {
 
     return (
         <section style={centerText}>
+            <h2 style={centerText}>Deals</h2>
             <IconButton aria-label="delete" style={filterIcon}>
                 <BsFilter
-                    size={40}/>
+                    size={25}/>
             </IconButton>
             <IconButton aria-label="delete" style={globeIcon}>
                 <FaGlobeAsia
-                    size={40}/>
+                    size={25}/>
             </IconButton>
-            <h2>Deals</h2>
-            <ul style={listStyle}>
-                <li>
-                    New deals
-                </li>
-            </ul>
             <DealsResults/>
         </section>
     )
@@ -31,17 +26,14 @@ const centerText = {
     textAlign: "center",
 }
 
-const listStyle = {
-    listStyleType: "none",
-    padding: "0",
-}
-
 const filterIcon = {
     float: "right",
-    margin: "1rem 2rem 0 0",
+    padding: "10px",
+    margin: "1rem 12% 2rem 0",
 }
 
 const globeIcon = {
     float: "right",
-    margin: "1rem 0 0 0",
+    padding: "10px",
+    margin: "1rem .5rem 2rem 0",
 }

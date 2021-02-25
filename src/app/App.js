@@ -56,4 +56,80 @@ const contextValue = {
         borderRadius: "4px",
         cursor: "pointer",
     },
+
+    resultsClearFloat: {
+        clear: "left"
+    },
+
+    resultsWeatherMargin: {
+        margin: "0 .5rem 0"
+    },
+
+    resultsLocationNameFloat: {
+        margin: "2rem 2rem .5rem",
+        float: "left",
+    },
+
+    resultsIconBookFloat: {
+        float: "right",
+        padding: "10px",
+        margin: "2rem 2rem .5rem 0rem",
+    },
+
+    resultsIconFlight: {
+        float: "right",
+        padding: "10px",
+        margin: "2rem .5rem 0 0",
+    },
+
+    resultsDescStyle: {
+        margin: "2rem 2rem .5rem"
+    },
+
+    resultsHeaderStyle: {
+        margin: "2rem 0 0 2rem",
+        fontSize: "2.5rem",
+    },
+
+    resultsDateStyle: {
+        margin: "0 0 0 2rem",
+    },
+
+
+    resultsImageStyle: {
+        width: "100%",
+        height: "100%",
+        borderRadius: "5px 5px 0px 0px",
+    },
+
+    resultsDivAddressStyle: {
+        display: "flex",
+        textAlign: "left",
+        padding: "0",
+        margin: "3rem 2rem 0",
+        height: "75%",
+    },
+
+    resultsStyle: {
+        listStyleType: "none",
+        textAlign: "left",
+        padding: "2rem",
+        margin: "4rem auto",
+        height: "20%",
+        width: "75%",
+        borderRadius: "5px",
+    },
+
+    resultsDivStyle: {
+        borderRadius: "5px",
+        backgroundColor: "#FFFFFF",
+        padding: "0 0 3rem",
+        boxShadow:
+            `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 2.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 4px rgba(0, 0, 0, 0.06),
+        0 22.3px 6.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 8.4px rgba(0, 0, 0, 0.086),
+        0 100px 100px rgba(0, 0, 0, 0.12)`
+    },
 }

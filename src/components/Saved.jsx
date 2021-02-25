@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import disaster_1 from '../img/disaster_1.jpg';
-import {IoMdAirplane} from "react-icons/io";
+import {IoMdAirplane} from 'react-icons/io';
+import {BsBookmarkDash} from 'react-icons/bs';
 import IconButton from '@material-ui/core/IconButton';
+import ThemeContext from "./ThemeContext";
 
 
 export default function Saved() {
+
+    const context = useContext(ThemeContext);
+    const clearFloat = context.resultsClearFloat;
+    const locationNameFloat = context.resultsLocationNameFloat;
+    const weatherMargin = context.resultsWeatherMargin;
+    const iconBookFloat = context.resultsIconBookFloat;
+    const iconFlight = context.resultsIconFlight;
+    const descStyle = context.resultsDescStyle;
+    const headerStyle = context.resultsHeaderStyle;
+    const dateStyle = context.resultsDateStyle;
+    const imageStyle = context.resultsImageStyle;
+    const divAddressStyle = context.resultsDivAddressStyle;
+    const resultsStyle = context.resultsStyle;
+    const resultsDivStyle = context.resultsDivStyle;
 
     return (
         <li style={resultsStyle}>
@@ -13,14 +29,15 @@ export default function Saved() {
                     style={imageStyle}
                     alt="disaster"
                     src={disaster_1}/>
-                <div style={{float: "left"}}>
-                    <div>
-                        <h3 style={locationNameFloat}>Peru</h3>
-                        <IconButton style={iconFloat}>
-                            <IoMdAirplane size={40}/>
-                        </IconButton>
-                    </div>
-                    <div style={infoStyle}>
+                <div>
+                    <h3 style={locationNameFloat}>Peru</h3>
+                    <IconButton style={iconBookFloat}>
+                        <BsBookmarkDash size={25}/>
+                    </IconButton>
+                    <IconButton style={iconFlight}>
+                        <IoMdAirplane size={25}/>
+                    </IconButton>
+                    <div style={clearFloat}>
                         <h2 style={headerStyle}>$100</h2>
                         <p style={dateStyle}>Feb 24 - 28</p>
                         <br/>
@@ -39,74 +56,4 @@ export default function Saved() {
             </div>
         </li>
     )
-}
-
-const weatherMargin = {
-    margin: "0 .5rem 0"
-}
-
-const locationNameFloat = {
-    margin: "0rem 2rem .5rem",
-    float: "left",
-}
-
-const iconFloat = {
-    float: "right",
-    margin: "0rem 0rem 2rem .5rem",
-}
-
-const infoStyle = {
-    // borderStyle: "solid",
-    // borderWidth: "1px",
-}
-
-const descStyle = {
-    margin: "0rem 0rem 2rem 2rem",
-}
-
-const headerStyle = {
-    margin: "2rem 0 0 2rem",
-    fontSize: "2.5rem",
-}
-
-const dateStyle = {
-    margin: "0 0 0 2rem",
-}
-
-const imageStyle = {
-    float: "left",
-    width: "550px",
-    height: "auto",
-}
-
-const divAddressStyle = {
-    display: "flex",
-    textAlign: "left",
-    padding: "0",
-    margin: "3rem 2rem 0",
-    height: "75%",
-}
-
-
-const resultsStyle = {
-    listStyleType: "none",
-    textAlign: "left",
-    padding: "2rem",
-    margin: "6rem 2rem",
-    height: "auto",
-    width: "auto",
-    borderRadius: "5px",
-    boxShadow:
-        `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 2.3px rgba(0, 0, 0, 0.048),
-        0 12.5px 4px rgba(0, 0, 0, 0.06),
-        0 22.3px 6.9px rgba(0, 0, 0, 0.072),
-        0 41.8px 8.4px rgba(0, 0, 0, 0.086),
-        0 100px 100px rgba(0, 0, 0, 0.12)`
-}
-
-const resultsDivStyle = {
-    clear: "both",
-    display: "inline-flex",
-    backgroundColor: "#FFFFFF",
 }
