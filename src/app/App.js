@@ -58,6 +58,9 @@ const contextValue = {
     centerText: {
         textAlign: "center",
     },
+    fontColor: {
+        color: "white",
+    },
     formInputStyle: {
         width: "100%",
         padding: "12px 20px",

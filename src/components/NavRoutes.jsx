@@ -9,7 +9,7 @@ import Saved from "./Saved";
 import NotFoundPage from "./NotFoundPage";
 
 
-export default function NavRoutes(props) {
+export default function NavRoutes() {
 
     return(
         <Switch>
@@ -18,12 +18,8 @@ export default function NavRoutes(props) {
                 component={Landing}
             />
             <PrivateRoute
-                path='/search'
+                path='/deals'
                 component={Deals}
-            />
-            <Route
-                path='/login'
-                component={Login}
             />
             <Route
                 path='/saved'
@@ -32,6 +28,10 @@ export default function NavRoutes(props) {
             <Route
                 path='/register'
                 component={Register}
+            />
+            <Route
+                path='/login'
+                component={Login}
             />
             <Route
                 component={NotFoundPage}

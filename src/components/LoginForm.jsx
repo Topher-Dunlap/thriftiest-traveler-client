@@ -73,7 +73,8 @@ export default function LoginForm() {
                             ref={register({required: true, minLength: 2})}
                             style={formInputStyle}
                             name="password"
-                            type="password"/>
+                            type="password"
+                            autoComplete="on"/>
                         <br/>
                         {errors.inputName && <p style={errorMessageStyling}>This is required</p>}
                     </div>
