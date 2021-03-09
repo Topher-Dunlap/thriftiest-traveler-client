@@ -1,11 +1,18 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {useForm} from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import ThemeContext from "./ThemeContext";
 import LoginFormInput from "./LoginFormInputs";
+import AuthService from '../service/auth-service';
+import AuthContext from '../components/AuthContext';
+import TokenService from "../service/token-service";
 
 export default function LoginForm() {
 
+    const {setLoggedIn} = useContext(AuthContext);
     const {register, errors} = useForm();
+    const history = useHistory();
+    const [errorState, setErrorState] = useState("")
 
     ///context theme styling
     const context = useContext(ThemeContext);
@@ -13,6 +20,27 @@ export default function LoginForm() {
     const formElementSpacing = context.formElementSpacing;
     const formButtonStyle = context.formButtonStyle;
     const formInputStyle = context.formInputStyle;
+
+    const handleSubmitJwtAuth = (ev) => {
+        ev.preventDefault()
+        const {email, password} = ev.target
+
+        AuthService.postLogin({
+            email: email.value,
+            password: password.value,
+        })
+            .then(res => {
+                email.value = ''
+                password.value = ''
+                TokenService.saveAuthToken(res.authToken)
+                setLoggedIn(TokenService.hasAuthToken())
+                history.push("/deals");
+            })
+            .catch(error => {
+                console.error({error})
+                setErrorState(error.error)
+            })
+    }
 
     const mapFormInputs = formOptions.map((option, idx) =>
         <LoginFormInput
@@ -24,10 +52,15 @@ export default function LoginForm() {
     )
     return (
         <div style={formStyle}>
-            <form>
+            <form onSubmit={handleSubmitJwtAuth}>
                 <header style={headerStyle}>
                     <h1>Login</h1>
                 </header>
+                {
+                    TokenService.hasAuthToken() ?
+                        <h3 style={{color: "green"}}>You're logged in!</h3> :
+                        <h4 style={errorMessageStyling}>{errorState}</h4>
+                }
                 <div>
                     {mapFormInputs}
                     {/*////password input was manually added due to but with mapping stripping password "type"*/}

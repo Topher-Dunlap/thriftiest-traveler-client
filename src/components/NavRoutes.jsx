@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-// import PrivateRoute from '../Utils/PrivateRoute'
+import PrivateRoute from '../Utils/PrivateRoute'
 import Landing from "./Landing";
 import Login from "./Login";
 import Register from "./Register";
@@ -17,12 +17,8 @@ export default function NavRoutes(props) {
                 exact path="/"
                 component={Landing}
             />
-            {/*<PrivateRoute*/}
-            {/*    path='/search'*/}
-            {/*    component={Search}*/}
-            {/*/>*/}
-            <Route
-                path='/deals'
+            <PrivateRoute
+                path='/search'
                 component={Deals}
             />
             <Route

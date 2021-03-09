@@ -5,11 +5,15 @@ import NavBar from '../components/NavBar';
 import NavRoutes from '../components/NavRoutes';
 import ComponentMountService from '../service/componentMount-service';
 import ThemeContext from '../components/ThemeContext';
+import AuthContext from '../components/AuthContext';
 
 function App() {
 
     ///useState for user location API
     const [userAirport, setUserAirport] = useState('');
+    //login state
+    const [loggedIn, setLoggedIn] = useState(false);
+    const contextAuth = {loggedIn, setLoggedIn}
 
     useEffect(() => {
             ///get user location
@@ -32,16 +36,18 @@ function App() {
 
     return (
         <ThemeContext.Provider value={contextValue}>
-            <main>
-                <NavBar/>
-                <div>
-                    <ErrorBoundary>
-                        <NavRoutes
-                            userAirport={userAirport}/>
-                        <Footer/>
-                    </ErrorBoundary>
-                </div>
-            </main>
+            <AuthContext.Provider value={contextAuth}>
+                <main>
+                    <NavBar/>
+                    <div>
+                        <ErrorBoundary>
+                            <NavRoutes
+                                userAirport={userAirport}/>
+                            <Footer/>
+                        </ErrorBoundary>
+                    </div>
+                </main>
+            </AuthContext.Provider>
         </ThemeContext.Provider>
     );
 }
