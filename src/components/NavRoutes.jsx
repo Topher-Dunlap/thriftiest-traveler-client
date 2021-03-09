@@ -9,7 +9,8 @@ import Saved from "./Saved";
 import NotFoundPage from "./NotFoundPage";
 
 
-export default function SwitchNavRoutes() {
+export default function NavRoutes(props) {
+
     return(
         <Switch>
             <Route

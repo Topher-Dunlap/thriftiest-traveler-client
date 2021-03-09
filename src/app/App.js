@@ -1,24 +1,49 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import NavRoutes from '../components/NavRoutes';
+import ComponentMountService from '../service/componentMount-service';
 import ThemeContext from '../components/ThemeContext';
+
 function App() {
 
-  return (
-      <ThemeContext.Provider value={contextValue}>
-          <main>
-            <NavBar/>
-            <div>
-              <ErrorBoundary>
-                <NavRoutes/>
-                <Footer/>
-              </ErrorBoundary>
-            </div>
-          </main>
-      </ThemeContext.Provider>
-  );
+    ///useState for user location API
+    const [userAirport, setUserAirport] = useState('');
+
+    useEffect(() => {
+            ///get user location
+            ComponentMountService.getUserLocation()
+                .then(locationResponse => {
+                    console.log("response.data.city: ", locationResponse.data.city)
+                    ComponentMountService.getUserAirport(locationResponse.data.city)
+                        .then(airportDataResponse => {
+                            console.log("flightData: ", airportDataResponse.data)
+                            setUserAirport(airportDataResponse.data)
+                        })
+                        .catch(error => console.log(error))
+                })
+                .catch(error => console.log(error))
+            ComponentMountService.getEvents()
+                .then(response => console.log("events: ", response.data))
+                .catch(error => console.log(error))
+        }, []
+    );
+
+    return (
+        <ThemeContext.Provider value={contextValue}>
+            <main>
+                <NavBar/>
+                <div>
+                    <ErrorBoundary>
+                        <NavRoutes
+                            userAirport={userAirport}/>
+                        <Footer/>
+                    </ErrorBoundary>
+                </div>
+            </main>
+        </ThemeContext.Provider>
+    );
 }
 
 export default App;
@@ -70,6 +95,12 @@ const contextValue = {
         float: "left",
     },
 
+    resultsTitleNameFloat: {
+        margin: "0rem 2rem .5rem",
+        float: "left",
+        fontStyle: "italic",
+    },
+
     resultsIconBookFloat: {
         float: "right",
         padding: "10px",
@@ -87,12 +118,13 @@ const contextValue = {
     },
 
     resultsHeaderStyle: {
-        margin: "2rem 0 0 2rem",
+        margin: "7rem 0 0 2rem",
         fontSize: "2.5rem",
     },
 
     resultsDateStyle: {
         margin: "0 0 0 2rem",
+        fontStyle: "italic"
     },
 
 
