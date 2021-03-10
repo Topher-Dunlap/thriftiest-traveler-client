@@ -1,71 +1,31 @@
-import React, {useContext} from 'react';
-import RegisterFormInput from "./RegisterFormInputs";
-import ThemeContext from "./ThemeContext";
+import React, {useState} from 'react';
+import RegisterForm from "./RegisterForm";
+import PasswordReq from "./PasswordReq";
+import RegisterTy from "./RegisterTy";
+
 
 export default function Register() {
 
-    const context = useContext(ThemeContext);
-    const formStyle = context.formStyle;
-    const formButtonStyle = context.formButtonStyle;
-    const centerText = context.centerText;
+    const [didRegister, setDidRegister] = useState(false)
 
-    const mapFormInputs = formOptions.map((option, idx) =>
-        <RegisterFormInput
-            key={idx}
-            fieldLabel={option.fieldLabel}
-            inputName={option.inputName}
-            type={option.type}
-        />
-    )
+    function registerConditional() {
+        if(didRegister !== true) {
+            return(
+                <div>
+                    <RegisterForm setDidRegister={setDidRegister}/>
+                    <PasswordReq />
+                </div>
+            )
+        }
+        else {
+            return <RegisterTy/>
+        }
+    }
 
     return (
-        <div style={formStyle}>
-            <form>
-                <div style={centerText}>
-                    <header>
-                        <h2>Register</h2>
-                    </header>
-                    <section style={margin}>
-                        <header>
-                            <h3>See the Craziest Deals Today!</h3>
-                        </header>
-                    </section>
-                </div>
-                {mapFormInputs}
-                <button
-                    style={formButtonStyle}
-                    type='submit'>
-                    Sign Up
-                </button>
-            </form>
-        </div>
+        <section>
+            {registerConditional()}
+        </section>
     )
 }
 
-
-const margin = {
-    margin: "0rem 2rem"
-}
-
-const formOptions = [
-    {
-        fieldLabel: "First name",
-        inputName: "first_name",
-        type: "text",
-    },
-    {
-        fieldLabel: "Last name",
-        inputName: "last_name",
-        type: "text",
-    },
-    {
-        fieldLabel: "Email",
-        inputName: "email",
-        type: "text",
-    },
-    {
-        fieldLabel: "Password",
-        inputName: "password",
-        type: "password",
-    },
-]

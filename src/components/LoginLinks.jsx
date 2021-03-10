@@ -5,14 +5,14 @@ import ThemeContext from "./ThemeContext";
 export default function LoginLinks(props) {
 
     const context = useContext(ThemeContext);
-    const fontColor = context.fontColor;
+    const navLinkStyle = context.navLinkStyle;
     const routeName = props.routeName;
     const routePath = props.routePath;
 
     return (
         <li>
             <Link
-                style={fontColor}
+                style={navLinkStyle}
                 to={routePath}>
                 {routeName}
             </Link>

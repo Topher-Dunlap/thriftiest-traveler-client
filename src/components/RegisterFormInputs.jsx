@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {useForm} from "react-hook-form";
 import ThemeContext from "./ThemeContext";
 
-export default function RegisterFormInput(props) {
+export default function RegisterFormInputs(props) {
 
     ///context theme styling
     const context = useContext(ThemeContext);

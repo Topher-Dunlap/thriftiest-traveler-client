@@ -1,6 +1,8 @@
 import React from 'react';
-import Register from "./Register";
-import LandingSection from "./LandingSection";
+import Register from './Register';
+import Demo from './Demo';
+import LandingSection from './LandingSection';
+import PasswordReq from './PasswordReq';
 
 export default function Landing() {
 
@@ -16,6 +18,7 @@ export default function Landing() {
         <section>
             <div>
                 {sectionMap}
+                <Demo/>
                 <Register/>
             </div>
         </section>

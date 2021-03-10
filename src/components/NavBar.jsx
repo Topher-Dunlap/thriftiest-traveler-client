@@ -12,7 +12,7 @@ export default function NavBar() {
 
     //Context Theme
     const context = useContext(ThemeContext);
-    const fontColor = context.fontColor;
+    const navLinkStyle = context.navLinkStyle;
 
     //logged in/logged out state
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
@@ -26,7 +26,6 @@ export default function NavBar() {
     useEffect(() => {
             const loggedInUser = localStorage.getItem("traveler-client-auth-token");
             if (loggedInUser) {
-                console.log("logging user in useEffect")
                 setLoggedIn(true);
             }
         }
@@ -36,8 +35,9 @@ export default function NavBar() {
         return (
             <Link
                 onClick={HandleLogoutClick}
-                style={fontColor}
-                to='/'>
+                style={navLinkStyle}
+                to='/'
+            >
                 Logout
             </Link>
         )

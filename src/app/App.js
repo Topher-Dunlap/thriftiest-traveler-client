@@ -58,9 +58,11 @@ const contextValue = {
     centerText: {
         textAlign: "center",
     },
+
     fontColor: {
         color: "white",
     },
+
     formInputStyle: {
         width: "100%",
         padding: "12px 20px",
@@ -70,16 +72,19 @@ const contextValue = {
         borderRadius: "4px",
         boxSizing: "border-box",
     },
+
     formElementSpacing: {
         margin: "0px 10px",
         textAlign: "left",
     },
+
     formStyle: {
         borderRadius: "5px",
         backgroundColor: "#f2f2f2",
-        margin: "2rem 2rem",
+        margin: "4rem 4rem 6rem 4rem",
         padding: "1rem 2rem 2rem",
     },
+
     formButtonStyle: {
         width: "100%",
         backgroundColor: "#333029",
@@ -89,6 +94,11 @@ const contextValue = {
         border: "none",
         borderRadius: "4px",
         cursor: "pointer",
+    },
+
+    navLinkStyle: {
+        color: "white",
+        textDecoration: "none",
     },
 
     resultsClearFloat: {
