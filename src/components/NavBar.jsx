@@ -4,6 +4,7 @@ import 'reactjs-popup/dist/index.css';
 import {Link} from "react-router-dom";
 import LoginLinks from "./LoginLinks";
 import TokenService from '../service/token-service';
+import UserIdService from '../service/userId-token';
 import AuthContext from '../components/AuthContext';
 import ThemeContext from "./ThemeContext";
 
@@ -18,6 +19,7 @@ export default function NavBar() {
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
     const HandleLogoutClick = () => {
         TokenService.clearAuthToken()
+        UserIdService.clearIdToken()
         setLoggedIn(TokenService.hasAuthToken())
         console.log("is user logged in? ", loggedIn)
     }
@@ -96,8 +98,8 @@ const filterOptions = [
         routePath: "/deals"
     },
     {
-        routeName: "Saved",
-        routePath: "/saved"
+        routeName: "Saved Deals",
+        routePath: "/save"
     },
 ]
 

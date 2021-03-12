@@ -2,7 +2,6 @@ import React from 'react';
 import Register from './Register';
 import Demo from './Demo';
 import LandingSection from './LandingSection';
-import PasswordReq from './PasswordReq';
 
 export default function Landing() {
 

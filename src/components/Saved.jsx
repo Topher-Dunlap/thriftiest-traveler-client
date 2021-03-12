@@ -1,59 +1,67 @@
-import React, {useContext} from 'react';
-import disaster_1 from '../img/disaster_1.jpg';
-import {IoMdAirplane} from 'react-icons/io';
-import {BsBookmarkDash} from 'react-icons/bs';
-import IconButton from '@material-ui/core/IconButton';
-import ThemeContext from "./ThemeContext";
-
+import React, { useEffect, useState} from 'react';
+import SaveService from '../service/save-service';
+import Loader from 'react-loader-spinner';
+import SavedResults from './SavedResults';
+import UserIdService from "../service/userId-token";
 
 export default function Saved() {
 
-    const context = useContext(ThemeContext);
-    const clearFloat = context.resultsClearFloat;
-    const locationNameFloat = context.resultsLocationNameFloat;
-    const weatherMargin = context.resultsWeatherMargin;
-    const iconBookFloat = context.resultsIconBookFloat;
-    const iconFlight = context.resultsIconFlight;
-    const descStyle = context.resultsDescStyle;
-    const headerStyle = context.resultsHeaderStyle;
-    const dateStyle = context.resultsDateStyle;
-    const imageStyle = context.resultsImageStyle;
-    const divAddressStyle = context.resultsDivAddressStyle;
-    const resultsStyle = context.resultsStyle;
-    const resultsDivStyle = context.resultsDivStyle;
+    ///useState for user location API
+    const [savedFlights, setSavedFlights] = useState('');
+    ///useState for loading spinner
+    const [loadingSpinner, setLoadingSpinner] = useState(false);
+    ///useID info from login
+    let user_id = UserIdService.getIdToken()
+
+    useEffect(() => {
+            ///set spinner in motion when loading
+            setLoadingSpinner(true)
+            ///get disaster and terror event data
+            SaveService.getAllSaved(user_id)
+                .then(response => {
+                    setSavedFlights(response.data)
+                    setLoadingSpinner(false)
+                    // console.log("saved api results: ", response.data)
+                })
+                .catch(error => console.log(error))
+        }, []
+    );
+
+    function loadResults(resultValues) {
+        // console.log("flightDeals: ", resultValues)
+        if (resultValues !== '') {
+            return savedFlights.map((event, idx) =>
+                <SavedResults
+                    key={idx}
+                    countryName={event.countryName}
+                    placeName={event.placeName}
+                    title={event.title}
+                    category={event.category}
+                    description={event.description}
+                    price={event.price}
+                    carrier={event.carriersName}
+                    departure={event.departure}
+                />
+            )
+        }
+        return false
+    }
 
     return (
-        <li style={resultsStyle}>
-            <div style={resultsDivStyle}>
-                <img
-                    style={imageStyle}
-                    alt="disaster"
-                    src={disaster_1}/>
-                <div>
-                    <h3 style={locationNameFloat}>Peru</h3>
-                    <IconButton style={iconBookFloat}>
-                        <BsBookmarkDash size={25}/>
-                    </IconButton>
-                    <IconButton style={iconFlight}>
-                        <IoMdAirplane size={25}/>
-                    </IconButton>
-                    <div style={clearFloat}>
-                        <h2 style={headerStyle}>$100</h2>
-                        <p style={dateStyle}>Feb 24 - 28</p>
-                        <br/>
-                        <p style={descStyle}>
-                            Peru has recently experienced a massive earthquake and plane tickets are
-                            plummeting as tourists avoid traveling to the area. While some resources for
-                            travelers may be inaccessible it's still possible to visit this location and experience
-                            peru at a time when prices are affordable!
-                        </p>
-                        <div style={divAddressStyle}>
-                            <h3 style={weatherMargin}>Weather in Peru:</h3>
-                            <p style={weatherMargin}>82 Degrees, Sunny</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
+        <section style={centerText}>
+            <h2 style={centerText}>Saved Flights</h2>
+            <Loader
+                style={centerText}
+                type="TailSpin"
+                color="grey"
+                height={80}
+                width={80}
+                visible={loadingSpinner}/>
+            {loadResults(savedFlights)}
+        </section>
     )
+}
+
+const centerText = {
+    textAlign: "center",
 }

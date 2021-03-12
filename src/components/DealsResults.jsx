@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import disaster_1 from '../img/disaster_1.jpg';
 import IconButton from '@material-ui/core/IconButton';
-import {BsBookmarkPlus} from "react-icons/bs";
-import {IoMdAirplane} from "react-icons/io";
-import ThemeContext from "./ThemeContext";
+import {BsBookmarkPlus} from 'react-icons/bs';
+import {IoMdAirplane} from 'react-icons/io';
+import ThemeContext from './ThemeContext';
+import SaveService from '../service/save-service';
+import UserIdService from "../service/userId-token";
 
 
 export default function DealsResults(props) {
@@ -33,6 +35,26 @@ export default function DealsResults(props) {
     let carrier = props.carrier;
     let departure = props.departure.DepartureDate.slice(0, 10) ? props.departure.DepartureDate.slice(0, 10) : '';
 
+    ///useID info from login
+    let user_id = UserIdService.getIdToken()
+
+    let handleSaveSubmit = e => {
+        e.preventDefault()
+        // get the form fields from the event
+        const flight = {
+            title: title,
+            country_name: countryName,
+            description: description,
+            place_name: placeName,
+            price: price,
+            carrier: carrier,
+            departure: departure,
+            traveler_user: user_id
+        }
+        SaveService.saveFlight(flight)
+            .then( savedResponse => console.log("saveFLight response: ", savedResponse))
+    }
+
 
     return (
         <li style={resultsStyle}>
@@ -44,7 +66,9 @@ export default function DealsResults(props) {
                 <div>
                     <h3 style={locationNameFloat}>Flights to {placeName}, {countryName}</h3>
                     <h4 style={titleNameFloat}>{title}</h4>
-                    <IconButton style={iconBookFloat}>
+                    <IconButton
+                        onClick={handleSaveSubmit}
+                        style={iconBookFloat}>
                         <BsBookmarkPlus size={25}/>
                     </IconButton>
                     <IconButton

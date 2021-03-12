@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Saved from '../components/Saved';
+import SavedResults from '../components/SavedResults';
 
 describe(`Saved component`, () => {
 
@@ -8,7 +8,7 @@ describe(`Saved component`, () => {
         const div = document.createElement('div');
 
         ReactDOM.render(
-            <Saved/>,
+            <SavedResults/>,
             div
         );
         ReactDOM.unmountComponentAtNode(div);

@@ -22,7 +22,7 @@ export default function NavRoutes() {
                 component={Deals}
             />
             <Route
-                path='/saved'
+                path='/save'
                 component={Saved}
             />
             <Route

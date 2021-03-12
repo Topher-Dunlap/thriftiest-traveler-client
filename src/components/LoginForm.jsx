@@ -6,10 +6,11 @@ import LoginFormInput from "./LoginFormInputs";
 import AuthService from '../service/auth-service';
 import AuthContext from '../components/AuthContext';
 import TokenService from "../service/token-service";
+import UserIdService from "../service/userId-token"
 
 export default function LoginForm() {
 
-    const {setLoggedIn} = useContext(AuthContext);
+    const authLoginContext = useContext(AuthContext);
     const {register, errors} = useForm();
     const history = useHistory();
     const [errorState, setErrorState] = useState("")
@@ -33,8 +34,11 @@ export default function LoginForm() {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                setLoggedIn(TokenService.hasAuthToken())
-                history.push("/deals");
+                authLoginContext.setLoggedIn(TokenService.hasAuthToken())
+                UserIdService.saveIDToken(res.user_id)
+                // authLoginContext.setUserId(res.user_id)
+                console.log("UserIdServicegetIdToken: ", UserIdService.getIdToken())
+                history.push("/deals")
             })
             .catch(error => {
                 console.error({error})
