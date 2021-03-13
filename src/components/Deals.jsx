@@ -17,7 +17,6 @@ export default function Deals() {
             .then(response => {
                 console.log("event api response: ", response.data)
                 dealsCall(response.data)
-                // setEventDataState(response.data)
             })
             .catch(error => console.log(error))
         }, []
@@ -36,19 +35,14 @@ export default function Deals() {
                         setFlightDeals(flightDeals => [...flightDeals, response.data[0]])
                         // console.log("flightDeals inside IF: ", flightDeals)
                     }
-                    // setFlightDeals(flightDeals => [...flightDeals, response.data[0]])
-                    console.log("flightDeals after if: ", flightDeals)
                     setLoadingSpinner(false)
                 })
                 .catch(error => console.log(error))
         })
-        console.log("flightDeals after forEach: ", flightDeals)
     }
 
     function loadResults(resultValues) {
-        // console.log("resultValues length: ", resultValues.length)
-        // resultValues.filter(eventObj => eventObj !== undefined)
-        console.log("resultValues filtered: ", resultValues)
+        console.log("deals pop data: ", resultValues)
         if (resultValues.length > 0) {
             return flightDeals.map((event, idx) =>
                 <DealsResults
