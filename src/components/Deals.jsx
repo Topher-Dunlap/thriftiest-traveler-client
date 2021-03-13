@@ -1,8 +1,8 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
 import DealsResults from './DealsResults';
-import EventContext from "./EventContext";
+// import EventContext from "./EventContext";
 import ComponentMountService from "../service/componentMount-service";
 
 export default function Deals() {
@@ -12,14 +12,12 @@ export default function Deals() {
     ///useState for loading spinner
     const [loadingSpinner, setLoadingSpinner] = useState(false);
 
-    const [eventData, setEventData] = useState([]);
-    // const eventData = useContext(EventContext)
-
     useEffect(() => {
         ComponentMountService.getEvents()
             .then(response => {
                 console.log("event api response: ", response.data)
                 dealsCall(response.data)
+                // setEventDataState(response.data)
             })
             .catch(error => console.log(error))
         }, []
@@ -32,20 +30,25 @@ export default function Deals() {
             ///get disaster and terror event data
             DealsService.getDeals([event])
                 .then(response => {
+                    console.log("raw response pre-flight state add: ", response)
                     if(response.data[0] !== undefined){
                         // console.log("flightDeals response.data[0]]: ", response.data[0])
-                        setFlightDeals([...flightDeals, response.data[0]])
+                        setFlightDeals(flightDeals => [...flightDeals, response.data[0]])
+                        // console.log("flightDeals inside IF: ", flightDeals)
                     }
-                    // console.log("flightDeals: ", flightDeals)
+                    // setFlightDeals(flightDeals => [...flightDeals, response.data[0]])
+                    console.log("flightDeals after if: ", flightDeals)
                     setLoadingSpinner(false)
                 })
                 .catch(error => console.log(error))
         })
+        console.log("flightDeals after forEach: ", flightDeals)
     }
 
     function loadResults(resultValues) {
-        console.log("resultValues length: ", resultValues.length)
-        console.log("resultValues: ", resultValues)
+        // console.log("resultValues length: ", resultValues.length)
+        // resultValues.filter(eventObj => eventObj !== undefined)
+        console.log("resultValues filtered: ", resultValues)
         if (resultValues.length > 0) {
             return flightDeals.map((event, idx) =>
                 <DealsResults
@@ -61,7 +64,7 @@ export default function Deals() {
                 />
             )
         }
-        return false
+        // return false
     }
 
     return (
