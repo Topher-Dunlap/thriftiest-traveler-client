@@ -36,8 +36,6 @@ export default function LoginForm() {
                 TokenService.saveAuthToken(res.authToken)
                 authLoginContext.setLoggedIn(TokenService.hasAuthToken())
                 UserIdService.saveIDToken(res.user_id)
-                // authLoginContext.setUserId(res.user_id)
-                console.log("UserIdServiceGetIdToken: ", UserIdService.getIdToken())
                 history.push("/deals")
             })
             .catch(error => {

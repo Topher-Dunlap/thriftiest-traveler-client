@@ -21,7 +21,6 @@ export default function NavBar() {
         TokenService.clearAuthToken()
         UserIdService.clearIdToken()
         setLoggedIn(TokenService.hasAuthToken())
-        console.log("is user logged in? ", loggedIn)
     }
 
     ///renders login or logout options depending on auth token
@@ -105,7 +104,7 @@ const loginLinkOptions = [
 //data used to populate nav when logged in
 const loggedInLinkOptions = [
     {
-        routeName: "Fresh Deals",
+        routeName: "Deals",
         routePath: "/deals"
     },
     {

@@ -1,31 +1,52 @@
-import React, { useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
 import DealsResults from './DealsResults';
+import EventContext from "./EventContext";
+import ComponentMountService from "../service/componentMount-service";
 
 export default function Deals() {
 
     ///useState for user location API
-    const [flightDeals, setFlightDeals] = useState('');
+    const [flightDeals, setFlightDeals] = useState([]);
     ///useState for loading spinner
     const [loadingSpinner, setLoadingSpinner] = useState(false);
 
+    const [eventData, setEventData] = useState([]);
+    // const eventData = useContext(EventContext)
+
     useEffect(() => {
-            ///set spinner in motion when loading
-            setLoadingSpinner(true)
-            ///get disaster and terror event data
-            DealsService.getDeals()
-                .then(response => {
-                    setFlightDeals(response.data)
-                    setLoadingSpinner(false)
-                })
-                .catch(error => console.log(error))
+        ComponentMountService.getEvents()
+            .then(response => {
+                console.log("event api response: ", response.data)
+                dealsCall(response.data)
+            })
+            .catch(error => console.log(error))
         }, []
     );
 
+    function dealsCall(eventData) {
+        eventData.forEach(event => {
+            ///set spinner in motion when loading
+            setLoadingSpinner(true)
+            ///get disaster and terror event data
+            DealsService.getDeals([event])
+                .then(response => {
+                    if(response.data[0] !== undefined){
+                        // console.log("flightDeals response.data[0]]: ", response.data[0])
+                        setFlightDeals([...flightDeals, response.data[0]])
+                    }
+                    // console.log("flightDeals: ", flightDeals)
+                    setLoadingSpinner(false)
+                })
+                .catch(error => console.log(error))
+        })
+    }
+
     function loadResults(resultValues) {
-        // console.log("flightDeals: ", flightDeals)
-        if (resultValues !== '') {
+        console.log("resultValues length: ", resultValues.length)
+        console.log("resultValues: ", resultValues)
+        if (resultValues.length > 0) {
             return flightDeals.map((event, idx) =>
                 <DealsResults
                     key={idx}
@@ -46,6 +67,7 @@ export default function Deals() {
     return (
         <section style={centerText}>
             <h2 style={centerText}>Deals</h2>
+            {loadResults(flightDeals)}
             <Loader
                 style={centerText}
                 type="TailSpin"
@@ -53,7 +75,6 @@ export default function Deals() {
                 height={80}
                 width={80}
                 visible={loadingSpinner}/>
-            {loadResults(flightDeals)}
         </section>
     )
 }

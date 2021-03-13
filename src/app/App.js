@@ -7,11 +7,18 @@ import ComponentMountService from '../service/componentMount-service';
 import ThemeContext from '../components/ThemeContext';
 import AuthContext from '../components/AuthContext';
 import DeleteContext from '../components/DeleteContext';
+import EventContext from '../components/EventContext'
 
 function App() {
 
     ///useState for user location API
     const [userAirport, setUserAirport] = useState('');
+
+    ///useState for event data
+    const [eventData, setEventData] = useState([]);
+    const eventContext = {
+        eventData: eventData
+    }
 
     //login state //login context
     const [loggedIn, setLoggedIn] = useState(false);
@@ -40,9 +47,6 @@ function App() {
                         .catch(error => console.log(error))
                 })
                 .catch(error => console.log(error))
-            ComponentMountService.getEvents()
-                .then(response => console.log("events: ", response.data))
-                .catch(error => console.log(error))
         }, []
     );
 
@@ -50,16 +54,18 @@ function App() {
         <ThemeContext.Provider value={contextValue}>
             <AuthContext.Provider value={contextAuth}>
                 <DeleteContext.Provider value={contextDelete}>
-                    <main>
-                        <NavBar/>
-                        <div>
-                            <ErrorBoundary>
-                                <NavRoutes
-                                    userAirport={userAirport}/>
-                                <Footer/>
-                            </ErrorBoundary>
-                        </div>
-                    </main>
+                    <EventContext.Provider value={eventContext}>
+                        <main>
+                            <NavBar/>
+                            <div>
+                                <ErrorBoundary>
+                                    <NavRoutes
+                                        userAirport={userAirport}/>
+                                    <Footer/>
+                                </ErrorBoundary>
+                            </div>
+                        </main>
+                    </EventContext.Provider>
                 </DeleteContext.Provider>
             </AuthContext.Provider>
         </ThemeContext.Provider>

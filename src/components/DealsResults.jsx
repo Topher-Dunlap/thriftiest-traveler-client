@@ -33,7 +33,8 @@ export default function DealsResults(props) {
     let placeName = props.placeName;
     let price = props.price;
     let carrier = props.carrier;
-    let departure = props.departure.DepartureDate.slice(0, 10) ? props.departure.DepartureDate.slice(0, 10) : '';
+    let departure = props.departure.DepartureDate === undefined ? '' : props.departure.DepartureDate.slice(0, 10);
+    // let departure = '';
 
     ///useID info from login
     let user_id = UserIdService.getIdToken()
