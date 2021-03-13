@@ -14,7 +14,6 @@ export default function NavBar() {
     //Context Theme
     const context = useContext(ThemeContext);
     const navLinkStyle = context.navLinkStyle;
-    // let loggedInLinks = [];
 
     //logged in/logged out state
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
@@ -47,7 +46,6 @@ export default function NavBar() {
                         Logout
                     </Link>
                 </li>
-
             </div>
         )
     }

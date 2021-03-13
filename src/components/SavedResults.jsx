@@ -46,8 +46,11 @@ export default function SavedResults(props) {
         e.preventDefault()
         SaveService.deleteSavedFlight(user_id, SavedId)
             .then( deletedResponse => {
-                console.log("SavedResults.jsx deletedResponse", deletedResponse)
+                // console.log("SavedResults.jsx deletedResponse", deletedResponse)
                 deleteContext.setDeleteFlight(true)
+            })
+            .catch(error => {
+                console.error({error})
             })
     }
 
