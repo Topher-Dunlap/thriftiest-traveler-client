@@ -4,6 +4,9 @@ import {IoMdAirplane} from 'react-icons/io';
 import {BsBookmarkDash} from 'react-icons/bs';
 import IconButton from '@material-ui/core/IconButton';
 import ThemeContext from "./ThemeContext";
+import SaveService from "../service/save-service";
+import UserIdService from "../service/userId-token";
+import DeleteContext from "./DeleteContext";
 
 
 export default function SavedResults(props) {
@@ -24,13 +27,29 @@ export default function SavedResults(props) {
     const titleNameFloat = context.resultsTitleNameFloat;
 
     ///props
-    let countryName = props.countryName
-    let placeName = props.placeName
-    let title = props.title
-    let description = props.description
-    let price = props.price
-    let carrier = props.carriersName
-    let departure = props.departure
+    let countryName = props.countryName;
+    let placeName = props.placeName;
+    let title = props.title;
+    let description = props.description;
+    let price = props.price;
+    let carrier = props.carriersName;
+    let departure = props.departure;
+    let SavedId = props.SavedId;
+
+    ///declare delete context
+    const deleteContext = useContext(DeleteContext);
+
+    ///useID info from login
+    let user_id = UserIdService.getIdToken();
+
+    let handleDeleteSubmit = e => {
+        e.preventDefault()
+        SaveService.deleteSavedFlight(user_id, SavedId)
+            .then( deletedResponse => {
+                console.log("SavedResults.jsx deletedResponse", deletedResponse)
+                deleteContext.setDeleteFlight(true)
+            })
+    }
 
     return (
         <li style={resultsStyle}>
@@ -42,7 +61,9 @@ export default function SavedResults(props) {
                 <div>
                     <h3 style={locationNameFloat}>Flights to {placeName}, {countryName}</h3>
                     <h4 style={titleNameFloat}>{title}</h4>
-                    <IconButton style={iconBookFloat}>
+                    <IconButton
+                        onClick={handleDeleteSubmit}
+                        style={iconBookFloat}>
                         <BsBookmarkDash size={25}/>
                     </IconButton>
                     <IconButton style={iconFlight}>

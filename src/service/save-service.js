@@ -37,7 +37,19 @@ const SaveService = {
             }
         };
         return axios(config)
+    },
+
+    deleteSavedFlight(user_id, flight_id){
+        const config = {
+            method: 'DELETE',
+            url: `${API_ENDPOINT}/save/${flight_id}`,
+            headers: {
+                'user_id': user_id
+            }
+        };
+        return axios(config)
     }
+
 }
 
 export default SaveService;

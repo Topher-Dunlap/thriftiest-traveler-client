@@ -14,6 +14,7 @@ export default function NavBar() {
     //Context Theme
     const context = useContext(ThemeContext);
     const navLinkStyle = context.navLinkStyle;
+    // let loggedInLinks = [];
 
     //logged in/logged out state
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
@@ -33,15 +34,21 @@ export default function NavBar() {
         }
     );
 
-    function RenderLogoutLink() {
+    function RenderLogoutLink(loggedInLinks) {
         return (
-            <Link
-                onClick={HandleLogoutClick}
-                style={navLinkStyle}
-                to='/'
-            >
-                Logout
-            </Link>
+            <div>
+                {loggedInLinks}
+                <li>
+                    <Link
+                        onClick={HandleLogoutClick}
+                        style={navLinkStyle}
+                        to='/'
+                    >
+                        Logout
+                    </Link>
+                </li>
+
+            </div>
         )
     }
 
@@ -49,6 +56,16 @@ export default function NavBar() {
     const loginLinks = loginLinkOptions.map((routeData, idx) =>
         <LoginLinks
             key={idx}
+            routeName={routeData.routeName}
+            routePath={routeData.routePath}
+        />
+    )
+
+    ///Map the Nav Links with data from loggedInLinks
+    const loggedInLinks = loggedInLinkOptions.map((routeData, idx) =>
+        <NavLinks
+            key={idx}
+            color="inherit"
             routeName={routeData.routeName}
             routePath={routeData.routePath}
         />
@@ -68,7 +85,7 @@ export default function NavBar() {
         <div style={topNav}>
                 <ul style={topNavLeft}>
                     {navRoutes}
-                    {loggedIn ? RenderLogoutLink() : loginLinks}
+                    {loggedIn ? RenderLogoutLink(loggedInLinks) : loginLinks}
                 </ul>
             <h1 style={headerStyle}>Thriftiest Traveler</h1>
         </div>
@@ -87,12 +104,8 @@ const loginLinkOptions = [
     },
 ]
 
-//data used to populate nav Links
-const filterOptions = [
-    {
-        routeName: "About",
-        routePath: "/"
-    },
+//data used to populate nav when logged in
+const loggedInLinkOptions = [
     {
         routeName: "Fresh Deals",
         routePath: "/deals"
@@ -100,6 +113,14 @@ const filterOptions = [
     {
         routeName: "Saved Deals",
         routePath: "/save"
+    },
+]
+
+//data used to populate nav Links
+const filterOptions = [
+    {
+        routeName: "About",
+        routePath: "/"
     },
 ]
 

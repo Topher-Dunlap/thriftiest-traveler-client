@@ -1,8 +1,9 @@
-import React, { useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import SaveService from '../service/save-service';
 import Loader from 'react-loader-spinner';
 import SavedResults from './SavedResults';
 import UserIdService from "../service/userId-token";
+import DeleteContext from "./DeleteContext";
 
 export default function Saved() {
 
@@ -12,6 +13,8 @@ export default function Saved() {
     const [loadingSpinner, setLoadingSpinner] = useState(false);
     ///useID info from login
     let user_id = UserIdService.getIdToken()
+    ///declare delete context
+    const deleteContext = useContext(DeleteContext);
 
     useEffect(() => {
             ///set spinner in motion when loading
@@ -21,14 +24,13 @@ export default function Saved() {
                 .then(response => {
                     setSavedFlights(response.data)
                     setLoadingSpinner(false)
-                    // console.log("saved api results: ", response.data)
+                    deleteContext.setDeleteFlight(false)
                 })
                 .catch(error => console.log(error))
-        }, []
+        }, [deleteContext.deleteFlight]
     );
 
     function loadResults(resultValues) {
-        // console.log("flightDeals: ", resultValues)
         if (resultValues !== '') {
             return savedFlights.map((event, idx) =>
                 <SavedResults
@@ -41,6 +43,7 @@ export default function Saved() {
                     price={event.price}
                     carrier={event.carriersName}
                     departure={event.departure}
+                    SavedId={event.id}
                 />
             )
         }
@@ -57,7 +60,7 @@ export default function Saved() {
                 height={80}
                 width={80}
                 visible={loadingSpinner}/>
-            {loadResults(savedFlights)}
+            {savedFlights === '' ? "No saved flights" : loadResults(savedFlights)}
         </section>
     )
 }

@@ -6,16 +6,25 @@ import NavRoutes from '../components/NavRoutes';
 import ComponentMountService from '../service/componentMount-service';
 import ThemeContext from '../components/ThemeContext';
 import AuthContext from '../components/AuthContext';
+import DeleteContext from '../components/DeleteContext';
 
 function App() {
 
     ///useState for user location API
     const [userAirport, setUserAirport] = useState('');
-    //login state
+
+    //login state //login context
     const [loggedIn, setLoggedIn] = useState(false);
     const contextAuth = {
         loggedIn: loggedIn,
         setLoggedIn: setLoggedIn,
+    }
+
+    ///useState for deleting saved flight
+    const [deleteFlight, setDeleteFlight] = useState(false);
+    const contextDelete = {
+        deleteFlight: deleteFlight,
+        setDeleteFlight: setDeleteFlight
     }
 
     useEffect(() => {
@@ -40,16 +49,18 @@ function App() {
     return (
         <ThemeContext.Provider value={contextValue}>
             <AuthContext.Provider value={contextAuth}>
-                <main>
-                    <NavBar/>
-                    <div>
-                        <ErrorBoundary>
-                            <NavRoutes
-                                userAirport={userAirport}/>
-                            <Footer/>
-                        </ErrorBoundary>
-                    </div>
-                </main>
+                <DeleteContext.Provider value={contextDelete}>
+                    <main>
+                        <NavBar/>
+                        <div>
+                            <ErrorBoundary>
+                                <NavRoutes
+                                    userAirport={userAirport}/>
+                                <Footer/>
+                            </ErrorBoundary>
+                        </div>
+                    </main>
+                </DeleteContext.Provider>
             </AuthContext.Provider>
         </ThemeContext.Provider>
     );

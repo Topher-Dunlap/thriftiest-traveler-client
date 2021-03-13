@@ -21,7 +21,7 @@ export default function NavRoutes() {
                 path='/deals'
                 component={Deals}
             />
-            <Route
+            <PrivateRoute
                 path='/save'
                 component={Saved}
             />
