@@ -10,7 +10,6 @@ const SaveService = {
             body: JSON.stringify(flight),
             headers: {
                 'content-type': 'application/json',
-                // 'authorization': `bearer ${config.API_KEY}`
             }
         })
             .then(res => {

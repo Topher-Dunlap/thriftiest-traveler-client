@@ -15,7 +15,7 @@ export default function Deals() {
     useEffect(() => {
         ComponentMountService.getEvents()
             .then(response => {
-                console.log("event api response: ", response.data)
+                // console.log("event api response: ", response.data)
                 dealsCall(response.data)
             })
             .catch(error => console.log(error))
@@ -29,7 +29,7 @@ export default function Deals() {
             ///get disaster and terror event data
             DealsService.getDeals([event])
                 .then(response => {
-                    console.log("raw response pre-flight state add: ", response)
+                    // console.log("raw response pre-flight state add: ", response)
                     if(response.data[0] !== undefined){
                         // console.log("flightDeals response.data[0]]: ", response.data[0])
                         setFlightDeals(flightDeals => [...flightDeals, response.data[0]])
@@ -42,7 +42,7 @@ export default function Deals() {
     }
 
     function loadResults(resultValues) {
-        console.log("deals pop data: ", resultValues)
+        // console.log("deals pop data: ", resultValues)
         if (resultValues.length > 0) {
             return flightDeals.map((event, idx) =>
                 <DealsResults
