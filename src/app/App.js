@@ -38,10 +38,10 @@ function App() {
             ///get user location
             ComponentMountService.getUserLocation()
                 .then(locationResponse => {
-                    // console.log("response.data.city: ", locationResponse.data.city)
+                    console.log("response.data.city: ", locationResponse.data.city)
                     ComponentMountService.getUserAirport(locationResponse.data.city)
                         .then(airportDataResponse => {
-                            // console.log("flightData: ", airportDataResponse.data)
+                            console.log("flightData: ", airportDataResponse.data)
                             setUserAirport(airportDataResponse.data)
                         })
                         .catch(error => console.log(error))
