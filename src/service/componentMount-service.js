@@ -1,3 +1,4 @@
+import configFile from '../config'
 const axios = require('axios');
 
 const ComponentMountService = {
@@ -5,7 +6,7 @@ const ComponentMountService = {
     getEvents() {
         const config = {
             method: 'get',
-            url: `http://localhost:8000/event/`,
+            url: `${configFile.API_ENDPOINT}/event/`,
         };
         return axios(config)
     },
@@ -21,7 +22,7 @@ const ComponentMountService = {
     getUserAirport(input) {
         const config = {
             method: 'get',
-            url: `http://localhost:8000/event/userAirport?userCity=${input}`,
+            url: `${configFile.API_ENDPOINT}/event/userAirport?userCity=${input}`,
         };
         return axios(config)
     },

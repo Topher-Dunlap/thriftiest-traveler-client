@@ -1,3 +1,4 @@
+import configFile from '../config'
 const axios = require('axios');
 
 const DealsService = {
@@ -5,7 +6,7 @@ const DealsService = {
     getDeals(event) {
         const config = {
             method: 'post',
-            url: `http://localhost:8000/event/deals`,
+            url: `${configFile.API_ENDPOINT}/event/deals`,
             data: JSON.stringify(event),
             headers: {
                 'Content-Type': 'application/json'
