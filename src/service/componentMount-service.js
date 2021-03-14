@@ -14,7 +14,7 @@ const ComponentMountService = {
     getUserLocation() {
         const config = {
             method: 'get',
-            url: `http://ip-api.com/json/`,
+            url: `https://ipapi.co/json`,
         };
         return axios(config)
     },
