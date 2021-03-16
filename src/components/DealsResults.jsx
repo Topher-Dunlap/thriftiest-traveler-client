@@ -37,7 +37,7 @@ export default function DealsResults(props) {
     // let departure = '';
 
     ///useID info from login
-    let user_id = UserIdService.getIdToken()
+    let user_id = parseInt(UserIdService.getIdToken())
 
     let handleSaveSubmit = e => {
         e.preventDefault()
