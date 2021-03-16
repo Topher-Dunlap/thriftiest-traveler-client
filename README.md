@@ -1,71 +1,73 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://thriftiest-traveler-client.vercel.app/
 
-## Available Scripts
 
-In the project directory, you can run:
+# Thriftiest-Traveler
 
-### `npm start`
+Thriftiest-Traveler shows you the best deals on travel in areas that have recently experienced a disaster or terrorist-related events.
+If you're looking to save some money on seeing some amazing places this may be the app for you!
+The users default location will be determined via their IP address.
+Their city airport will then be determined via their IP address and used to find flight prices to event locations.
+There is a threshold of 50 api calls a minute. Depending on the refresh of the deals tab it may return no deals. You may reload after a minutes time.
+The default call to the API is 20 on loading the Deals tab. Results include Price, Location, Departure Date, Description of event and title.
+Users have the ability to save a flight deal as well as a flight icon that will navigate them to orbitz.com where they can search
+for their deal for direct access to purchasing tickets. Deal information is not automatically populated in the orbitz search. Next to the flight icon
+there is also a save/bookmark icon where users can save the flight information. When saved these fights will appear in your saved tab when logged in.
+In order to delete the saved flight you'll need to find the flight in the saved tab and click the delete bookmark icon.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Motivation
+I created this app after seeing a TikTok video of a traveler utilizing this method for saving money when booking trips. 
+I thought it was a unique way to approach travel in order to experience incredible cities and countries at the lowest possible 
+prices.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots
+Landing Page:
 
-### `npm test`
+![landing page](./src/images/wo-search.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Deals:
 
-### `npm run build`
+![Deals](./src/images/wo-search.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Saved:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![saved](./src/images/wo-results.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## How to Use
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Register an account or login using your own credentials or that of the Demo account.
+2. Once the user is logged in they will be automatically re-directed to the Deals tab.
+3. Scroll through the Deals and save ones that look appealing. Navigate to Orbitz using the plane icon to book your trip today!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Built With
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Front-End
+* React
+* JSX
+* JavaScript
+* jQuery
+* Jest
+* Axios
+* Service Objects
+* Routing
+* Error Boundaries
+* JWT
+* Hooks
+* CSS
 
-## Learn More
+## Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Secure login and registration technology.
+* Loads the most current flight prices to cities that have had tourist draining events.
+* Dynamically displayed results
+* Dynamically Save and Delete flight deals to your account.
+* Direct access to Orbitz.com
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authors
 
-### Analyzing the Bundle Size
+* **Topher Dunlap** - ** - Design, Front-End development/testing, styling, deployment and iteration.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# thriftiest-traveler-client
