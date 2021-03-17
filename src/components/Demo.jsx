@@ -10,7 +10,7 @@ export default function Demo() {
             <p style={paraMargin}>If you'd like to demo this app without registration please enter the following credentials:</p>
             <ul style={listStyle}>
                 <li>
-                    Email: testgmail.com
+                    Email: test@gmail.com
                 </li>
                 <li>
                     Password: P@sswordsAreCool1!
