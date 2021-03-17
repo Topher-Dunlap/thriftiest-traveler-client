@@ -6,32 +6,28 @@ https://thriftiest-traveler-client.vercel.app/
 
 Thriftiest-Traveler shows you the best deals on travel in areas that have recently experienced a disaster or terrorist-related events.
 If you're looking to save some money on seeing some amazing places this may be the app for you!
-The users default location will be determined via their IP address.
+The user's default location will be determined via their IP address.
 Their city airport will then be determined via their IP address and used to find flight prices to event locations.
-There is a threshold of 50 api calls a minute. Depending on the refresh of the deals tab it may return no deals. You may reload after a minutes time.
-The default call to the API is 20 on loading the Deals tab. Results include Price, Location, Departure Date, Description of event and title.
-Users have the ability to save a flight deal as well as a flight icon that will navigate them to orbitz.com where they can search
-for their deal for direct access to purchasing tickets. Deal information is not automatically populated in the orbitz search. Next to the flight icon
+There is a threshold of 50 API calls a minute. Depending on the refresh of the deals tab it may return no deals. You may reload after one minute.
+The default call to the API is 20 on loading the Deals tab. Results include Price, Location, Departure Date, Description of event, and title.
+Users can save a flight deal as well as a flight icon that will navigate them to Orbitz.com where they can search
+for their deal for direct access to purchasing tickets. Deal information is not automatically populated in the Orbitz search. Next to the flight icon,
 there is also a save/bookmark icon where users can save the flight information. When saved these fights will appear in your saved tab when logged in.
-In order to delete the saved flight you'll need to find the flight in the saved tab and click the delete bookmark icon.
+To delete the saved flight you'll need to find the flight in the saved tab and click the delete bookmark icon.
 
 ## Motivation
-I created this app after seeing a TikTok video of a traveler utilizing this method for saving money when booking trips. 
-I thought it was a unique way to approach travel in order to experience incredible cities and countries at the lowest possible 
+I created this app after seeing a TikTok video of a traveler utilizing this method for saving money when booking trips.
+I thought it was a unique way to approach travel to experience incredible cities and countries at the lowest possible
 prices.
 
 ## Screenshots
 Landing Page:
 
-![landing page](./src/images/wo-search.png)
+![landing page](./src/img/landing.png)
 
 Deals:
 
-![Deals](./src/images/wo-search.png)
-
-Saved:
-
-![saved](./src/images/wo-results.png)
+![deals page](./src/img/deals_rm.png)
 
 
 

@@ -9,7 +9,7 @@ export default function Deals() {
 
     const [flightDeals, setFlightDeals] = useState([]);     ///useState for user location API
     const [loadingSpinner, setLoadingSpinner] = useState(true);    ///useState for loading spinner
-    const [noPriceFlight, setNoPriceFlight] = useState([])
+    const [noPriceFlight, setNoPriceFlight] = useState([]);
     const errorContext = useContext(ErrorContext);  ///declare error context
 
     useEffect(() => {
