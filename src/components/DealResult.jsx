@@ -42,6 +42,7 @@ export default function DealResult(props) {
 
     let handleDeleteSubmit = e => {
         e.preventDefault()
+        setSavedBool(!savedBool)
         SaveService.deleteSavedFlight(user_id, savedFlightId)
             .then( deletedResponse => {
                 deleteContext.setDeleteFlight(true)
