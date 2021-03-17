@@ -1,28 +1,27 @@
-import React, {useContext} from 'react';
-// import disaster_1 from '../img/disaster_1.jpg';
+import React, {useContext, useState} from 'react';
 import dealsPhoto from '../img/deals.png';
 import IconButton from '@material-ui/core/IconButton';
 import {BsBookmarkPlus} from 'react-icons/bs';
+import {BsBookmarkDash} from 'react-icons/bs';
 import {IoMdAirplane} from 'react-icons/io';
 import ThemeContext from './ThemeContext';
+import DeleteContext from "./DeleteContext";
 import SaveService from '../service/save-service';
 import UserIdService from "../service/userId-token";
 
 
-export default function DealsResults(props) {
+export default function DealResult(props) {
 
     ///context style
     const context = useContext(ThemeContext);
     const clearFloat = context.resultsClearFloat;
     const locationNameFloat = context.resultsLocationNameFloat;
-    // const weatherMargin = context.resultsWeatherMargin;
     const iconBookFloat = context.resultsIconBookFloat;
     const iconFlight = context.resultsIconFlight;
     const descStyle = context.resultsDescStyle;
     const headerStyle = context.resultsHeaderStyle;
     const dateStyle = context.resultsDateStyle;
     const imageStyle = context.resultsImageStyle;
-    // const divAddressStyle = context.resultsDivAddressStyle;
     const resultsStyle = context.resultsStyle;
     const resultsDivStyle = context.resultsDivStyle;
     const titleNameFloat = context.resultsTitleNameFloat;
@@ -35,14 +34,26 @@ export default function DealsResults(props) {
     let price = props.price;
     let carrier = props.carrier;
     let departure = props.departure.DepartureDate === undefined ? '' : props.departure.DepartureDate.slice(0, 10);
-    // let departure = '';
 
-    ///useID info from login
-    let user_id = parseInt(UserIdService.getIdToken())
+    let user_id = parseInt(UserIdService.getIdToken());     ///useID info from login
+    const [savedBool, setSavedBool] = useState(false);    ///save bool state
+    const [savedFlightId, setSavedFlightId] = useState(false);    ///save bool state
+    const deleteContext = useContext(DeleteContext);     ///declare delete context
+
+    let handleDeleteSubmit = e => {
+        e.preventDefault()
+        SaveService.deleteSavedFlight(user_id, savedFlightId)
+            .then( deletedResponse => {
+                deleteContext.setDeleteFlight(true)
+            })
+            .catch(error => {
+                console.error({error})
+            })
+    }
 
     let handleSaveSubmit = e => {
         e.preventDefault()
-        // get the form fields from the event
+        setSavedBool(!savedBool)
         const flight = {
             title: title,
             country_name: countryName,
@@ -54,7 +65,7 @@ export default function DealsResults(props) {
             traveler_user: user_id
         }
         SaveService.saveFlight(flight)
-            .then( savedResponse => console.log("saveFLight response: ", savedResponse))
+            .then( savedResponse => setSavedFlightId(savedResponse.id))
     }
 
 
@@ -69,9 +80,9 @@ export default function DealsResults(props) {
                     <h3 style={locationNameFloat}>Flights to {placeName}, {countryName}</h3>
                     <h4 style={titleNameFloat}>{title}</h4>
                     <IconButton
-                        onClick={handleSaveSubmit}
+                        onClick={savedBool ? handleDeleteSubmit : handleSaveSubmit}
                         style={iconBookFloat}>
-                        <BsBookmarkPlus size={25}/>
+                        {savedBool ? <BsBookmarkDash size={25}/> : <BsBookmarkPlus size={25}/>}
                     </IconButton>
                     <IconButton
                         href={"https://www.orbitz.com/"}
@@ -88,10 +99,6 @@ export default function DealsResults(props) {
                     <p style={descStyle}>
                         {description}
                     </p>
-                    {/*<div style={divAddressStyle}>*/}
-                    {/*    <h3 style={weatherMargin}>Weather in {placeName}:</h3>*/}
-                    {/*    <p style={weatherMargin}>82 Degrees, Sunny</p>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </li>

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import SaveService from '../service/save-service';
 import Loader from 'react-loader-spinner';
-import SavedResults from './SavedResults';
+import SavedResults from './SavedResult';
 import UserIdService from "../service/userId-token";
 import DeleteContext from "./DeleteContext";
 
@@ -31,17 +31,18 @@ export default function Saved() {
     );
 
     function loadResults(resultValues) {
+        console.log("savedFlights: ", savedFlights)
         if (resultValues !== '') {
             return savedFlights.map((event, idx) =>
                 <SavedResults
                     key={idx}
-                    countryName={event.countryName}
-                    placeName={event.placeName}
+                    countryName={event.country_name}
+                    placeName={event.place_name}
                     title={event.title}
                     category={event.category}
                     description={event.description}
                     price={event.price}
-                    carrier={event.carriersName}
+                    carrier={event.carrier}
                     departure={event.departure}
                     SavedId={event.id}
                 />
@@ -52,7 +53,7 @@ export default function Saved() {
 
     return (
         <section style={centerText}>
-            <h2 style={headerStyle}>Saved Flights</h2>
+            <h2 style={headerStyle}>Saved Deals</h2>
             <Loader
                 style={centerText}
                 type="TailSpin"

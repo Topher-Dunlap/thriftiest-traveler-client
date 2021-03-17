@@ -1,6 +1,6 @@
-import config from '../config'
+import config from '../config';
 const axios = require('axios');
-const API_ENDPOINT = config.API_ENDPOINT
+const API_ENDPOINT = config.API_ENDPOINT;
 
 const SaveService = {
 

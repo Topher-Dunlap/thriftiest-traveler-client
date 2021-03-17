@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DealsResults from '../components/DealsResults';
+import DealsResults from '../components/DealResult';
 
 const event = {
     title: "testflight",

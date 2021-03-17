@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
-import DealsResults from './DealsResults';
+import DealsResults from './DealResult';
 // import EventContext from "./EventContext";
 import ComponentMountService from "../service/componentMount-service";
 
@@ -10,7 +10,7 @@ export default function Deals() {
     ///useState for user location API
     const [flightDeals, setFlightDeals] = useState([]);
     ///useState for loading spinner
-    const [loadingSpinner, setLoadingSpinner] = useState(false);
+    const [loadingSpinner, setLoadingSpinner] = useState(true);
 
     useEffect(() => {
         ComponentMountService.getEvents()
@@ -71,7 +71,8 @@ export default function Deals() {
                 color="grey"
                 height={80}
                 width={80}
-                visible={loadingSpinner}/>
+                visible={loadingSpinner}
+            />
         </section>
     )
 }

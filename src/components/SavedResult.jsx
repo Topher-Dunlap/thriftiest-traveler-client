@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import disaster_1 from '../img/disaster_1.jpg';
+import dealsPhoto from '../img/deals.png';
 import {IoMdAirplane} from 'react-icons/io';
 import {BsBookmarkDash} from 'react-icons/bs';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,19 +9,17 @@ import UserIdService from "../service/userId-token";
 import DeleteContext from "./DeleteContext";
 
 
-export default function SavedResults(props) {
+export default function SavedResult(props) {
 
     const context = useContext(ThemeContext);
     const clearFloat = context.resultsClearFloat;
     const locationNameFloat = context.resultsLocationNameFloat;
-    const weatherMargin = context.resultsWeatherMargin;
     const iconBookFloat = context.resultsIconBookFloat;
     const iconFlight = context.resultsIconFlight;
     const descStyle = context.resultsDescStyle;
     const headerStyle = context.resultsHeaderStyle;
     const dateStyle = context.resultsDateStyle;
     const imageStyle = context.resultsImageStyle;
-    const divAddressStyle = context.resultsDivAddressStyle;
     const resultsStyle = context.resultsStyle;
     const resultsDivStyle = context.resultsDivStyle;
     const titleNameFloat = context.resultsTitleNameFloat;
@@ -32,7 +30,7 @@ export default function SavedResults(props) {
     let title = props.title;
     let description = props.description;
     let price = props.price;
-    let carrier = props.carriersName;
+    let carrier = props.carrier;
     let departure = props.departure;
     let SavedId = props.SavedId;
 
@@ -46,7 +44,6 @@ export default function SavedResults(props) {
         e.preventDefault()
         SaveService.deleteSavedFlight(user_id, SavedId)
             .then( deletedResponse => {
-                // console.log("SavedResults.jsx deletedResponse", deletedResponse)
                 deleteContext.setDeleteFlight(true)
             })
             .catch(error => {
@@ -60,7 +57,7 @@ export default function SavedResults(props) {
                 <img
                     style={imageStyle}
                     alt="disaster"
-                    src={disaster_1}/>
+                    src={dealsPhoto}/>
                 <div>
                     <h3 style={locationNameFloat}>Flights to {placeName}, {countryName}</h3>
                     <h4 style={titleNameFloat}>{title}</h4>
@@ -79,10 +76,6 @@ export default function SavedResults(props) {
                         <p style={descStyle}>
                             {description}
                         </p>
-                        <div style={divAddressStyle}>
-                            <h3 style={weatherMargin}>Weather in {placeName}:</h3>
-                            <p style={weatherMargin}>82 Degrees, Sunny</p>
-                        </div>
                     </div>
                 </div>
             </div>

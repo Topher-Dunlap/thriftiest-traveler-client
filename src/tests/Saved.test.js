@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SavedResults from '../components/SavedResults';
+import SavedResults from '../components/SavedResult';
 
 describe(`Saved component`, () => {
 
