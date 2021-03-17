@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import dealsPhoto from '../img/deals.png';
 import {IoMdAirplane} from 'react-icons/io';
 import {BsBookmarkDash} from 'react-icons/bs';
@@ -36,6 +36,7 @@ export default function SavedResult(props) {
 
     const deleteContext = useContext(DeleteContext);    ///declare delete context
     let user_id = UserIdService.getIdToken();    ///useID info from login
+    const [errorState, setErrorState] = useState([]);
 
     let handleDeleteSubmit = e => {
         e.preventDefault()
@@ -43,9 +44,7 @@ export default function SavedResult(props) {
             .then( deletedResponse => {
                 deleteContext.setDeleteFlight(true);
             })
-            .catch(error => {
-                console.error({error});
-            })
+            .catch(error => setErrorState(error));
     }
 
     return (

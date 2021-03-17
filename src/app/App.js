@@ -16,9 +16,7 @@ function App() {
 
     ///useState for event data
     const [eventData, setEventData] = useState([]);
-    const eventContext = {
-        eventData: eventData
-    }
+    const eventContext = {eventData: eventData}
 
     //login state //login context
     const [loggedIn, setLoggedIn] = useState(false);
@@ -34,6 +32,8 @@ function App() {
         setDeleteFlight: setDeleteFlight
     }
 
+    const [errorState, setErrorState] = useState([]);
+
     useEffect(() => {
             ///get user location
             ComponentMountService.getUserLocation()
@@ -42,9 +42,9 @@ function App() {
                         .then(airportDataResponse => {
                             setUserAirport(airportDataResponse.data)
                         })
-                        .catch(error => console.log(error))
+                        .catch(error => setErrorState(error));
                 })
-                .catch(error => console.log(error))
+                .catch(error => setErrorState(error));
         }, []
     );
 
@@ -129,7 +129,6 @@ const contextValue = {
 
     resultsLocationNameFloat: {
         margin: "2rem 2rem .5rem",
-        // float: "left",
     },
 
     resultsTitleNameFloat: {

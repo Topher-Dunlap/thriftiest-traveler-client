@@ -9,18 +9,19 @@ export default function Saved() {
 
     const [savedFlights, setSavedFlights] = useState('');     ///useState for user location API
     const [loadingSpinner, setLoadingSpinner] = useState(false);    ///useState for loading spinner
+    const [errorState, setErrorState] = useState([]);
     let user_id = UserIdService.getIdToken();    ///useID info from login
     const deleteContext = useContext(DeleteContext);    ///declare delete context
 
     useEffect(() => {
             setLoadingSpinner(true);
-            SaveService.getAllSaved(user_id)      ///get disaster and terror event data
+            SaveService.getAllSaved(user_id)  ///get disaster and terror event data
                 .then(response => {
                     setSavedFlights(response.data);
                     setLoadingSpinner(false);
                     deleteContext.setDeleteFlight(false);
                 })
-                .catch(error => console.log(error));
+                .catch(error => setErrorState(error));
         }, [deleteContext.deleteFlight]
     );
 
@@ -63,5 +64,6 @@ const centerText = {
 }
 
 const headerStyle = {
-    fontSize: "2rem"
+    fontSize: "2rem",
+    color: "#333029",
 }

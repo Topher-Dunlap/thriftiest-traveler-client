@@ -8,13 +8,14 @@ export default function Deals() {
 
     const [flightDeals, setFlightDeals] = useState([]);     ///useState for user location API
     const [loadingSpinner, setLoadingSpinner] = useState(true);    ///useState for loading spinner
+    const [errorState, setErrorState] = useState([]);
 
     useEffect(() => {
         ComponentMountService.getEvents()
             .then(response => {
                 dealsCall(response.data);
             })
-            .catch(error => console.log(error));
+            .catch(error => setErrorState(error));
         }, []
     );
 
@@ -28,7 +29,7 @@ export default function Deals() {
                     }
                     setLoadingSpinner(false);
                 })
-                .catch(error => console.log(error));
+                .catch(error => setErrorState(error));
         })
     }
 
@@ -66,11 +67,11 @@ export default function Deals() {
     )
 }
 
-
 const centerText = {
     textAlign: "center",
 }
 
 const headerStyle = {
-    fontSize: "2rem"
+    fontSize: "2rem",
+    color: "#333029",
 }

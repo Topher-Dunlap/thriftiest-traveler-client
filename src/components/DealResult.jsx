@@ -38,6 +38,7 @@ export default function DealResult(props) {
     let user_id = parseInt(UserIdService.getIdToken());     ///useID info from login
     const [savedBool, setSavedBool] = useState(false);    ///save bool state
     const [savedFlightId, setSavedFlightId] = useState(false);    ///save bool state
+    const [errorState, setErrorState] = useState([]);
     const deleteContext = useContext(DeleteContext);     ///declare delete context
 
     let handleDeleteSubmit = e => {
@@ -47,9 +48,7 @@ export default function DealResult(props) {
             .then( deletedResponse => {
                 deleteContext.setDeleteFlight(true);
             })
-            .catch(error => {
-                console.error({error});
-            })
+            .catch(error => setErrorState(error));
     }
 
     let handleSaveSubmit = e => {
@@ -66,7 +65,8 @@ export default function DealResult(props) {
             traveler_user: user_id
         }
         SaveService.saveFlight(flight)
-            .then( savedResponse => setSavedFlightId(savedResponse.id));
+            .then( savedResponse => setSavedFlightId(savedResponse.id))
+            .catch(error => setErrorState(error))
     }
 
 
