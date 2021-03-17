@@ -40,7 +40,6 @@ function App() {
                 .then(locationResponse => {
                     ComponentMountService.getUserAirport(locationResponse.data.city)
                         .then(airportDataResponse => {
-                            console.log("flightData: ", airportDataResponse.data)
                             setUserAirport(airportDataResponse.data)
                         })
                         .catch(error => console.log(error))
@@ -130,7 +129,7 @@ const contextValue = {
 
     resultsLocationNameFloat: {
         margin: "2rem 2rem .5rem",
-        float: "left",
+        // float: "left",
     },
 
     resultsTitleNameFloat: {

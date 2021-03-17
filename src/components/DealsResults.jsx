@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import disaster_1 from '../img/disaster_1.jpg';
+// import disaster_1 from '../img/disaster_1.jpg';
 import dealsPhoto from '../img/deals.png';
 import IconButton from '@material-ui/core/IconButton';
 import {BsBookmarkPlus} from 'react-icons/bs';
@@ -15,14 +15,14 @@ export default function DealsResults(props) {
     const context = useContext(ThemeContext);
     const clearFloat = context.resultsClearFloat;
     const locationNameFloat = context.resultsLocationNameFloat;
-    const weatherMargin = context.resultsWeatherMargin;
+    // const weatherMargin = context.resultsWeatherMargin;
     const iconBookFloat = context.resultsIconBookFloat;
     const iconFlight = context.resultsIconFlight;
     const descStyle = context.resultsDescStyle;
     const headerStyle = context.resultsHeaderStyle;
     const dateStyle = context.resultsDateStyle;
     const imageStyle = context.resultsImageStyle;
-    const divAddressStyle = context.resultsDivAddressStyle;
+    // const divAddressStyle = context.resultsDivAddressStyle;
     const resultsStyle = context.resultsStyle;
     const resultsDivStyle = context.resultsDivStyle;
     const titleNameFloat = context.resultsTitleNameFloat;
