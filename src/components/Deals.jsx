@@ -76,6 +76,7 @@ export default function Deals() {
     )
 }
 
+
 const centerText = {
     textAlign: "center",
 }
