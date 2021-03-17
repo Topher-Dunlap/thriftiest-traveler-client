@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
 import DealsResults from './DealResult';
 import ComponentMountService from "../service/componentMount-service";
+import ErrorContext from "./ErrorContext";
 
 export default function Deals() {
 
     const [flightDeals, setFlightDeals] = useState([]);     ///useState for user location API
     const [loadingSpinner, setLoadingSpinner] = useState(true);    ///useState for loading spinner
-    const [errorState, setErrorState] = useState([]);
+    const [noPriceFlight, setNoPriceFlight] = useState([])
+    const errorContext = useContext(ErrorContext);  ///declare error context
 
     useEffect(() => {
         ComponentMountService.getEvents()
-            .then(response => {
-                dealsCall(response.data);
-            })
-            .catch(error => setErrorState(error));
+            .then(response => dealsCall(response.data))
+            .catch(error => errorContext.setErrorState(error));
         }, []
     );
 
@@ -24,12 +24,20 @@ export default function Deals() {
             setLoadingSpinner(true);
             DealsService.getDeals([event])    ///get disaster and terror event data
                 .then(response => {
-                    if(response.data[0] !== undefined){
+                    console.log("deals response: ", response)
+                    if(response.data === undefined || response.data === "no price" || response.data === "no deal"){
+                        setNoPriceFlight(response.data[0])
+                    }
+                    else{
+                        console.log("inside else: ", response)
                         setFlightDeals(flightDeals => [...flightDeals, response.data[0]]);
                     }
                     setLoadingSpinner(false);
                 })
-                .catch(error => setErrorState(error));
+                .catch(error => {
+                    console.log("deals error catch", error)
+                    errorContext.setErrorState(error)
+                });
         })
     }
 

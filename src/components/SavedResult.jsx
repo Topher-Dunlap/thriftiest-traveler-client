@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import dealsPhoto from '../img/deals.png';
 import {IoMdAirplane} from 'react-icons/io';
 import {BsBookmarkDash} from 'react-icons/bs';
@@ -7,6 +7,7 @@ import ThemeContext from "./ThemeContext";
 import SaveService from "../service/save-service";
 import UserIdService from "../service/userId-token";
 import DeleteContext from "./DeleteContext";
+import ErrorContext from "./ErrorContext";
 
 
 export default function SavedResult(props) {
@@ -35,8 +36,8 @@ export default function SavedResult(props) {
     let SavedId = props.SavedId;
 
     const deleteContext = useContext(DeleteContext);    ///declare delete context
+    const errorContext = useContext(ErrorContext);  ///declare error context
     let user_id = UserIdService.getIdToken();    ///useID info from login
-    const [errorState, setErrorState] = useState([]);
 
     let handleDeleteSubmit = e => {
         e.preventDefault()
@@ -44,7 +45,7 @@ export default function SavedResult(props) {
             .then( deletedResponse => {
                 deleteContext.setDeleteFlight(true);
             })
-            .catch(error => setErrorState(error));
+            .catch(error => errorContext.setErrorState(error));
     }
 
     return (

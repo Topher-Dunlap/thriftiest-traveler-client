@@ -5,9 +5,10 @@ import {BsBookmarkPlus} from 'react-icons/bs';
 import {BsBookmarkDash} from 'react-icons/bs';
 import {IoMdAirplane} from 'react-icons/io';
 import ThemeContext from './ThemeContext';
-import DeleteContext from "./DeleteContext";
+import DeleteContext from './DeleteContext';
+import ErrorContext from "./ErrorContext";
 import SaveService from '../service/save-service';
-import UserIdService from "../service/userId-token";
+import UserIdService from '../service/userId-token';
 
 
 export default function DealResult(props) {
@@ -35,10 +36,10 @@ export default function DealResult(props) {
     let carrier = props.carrier;
     let departure = props.departure.DepartureDate === undefined ? '' : props.departure.DepartureDate.slice(0, 10);
 
+    const errorContext = useContext(ErrorContext);  ///declare error context
     let user_id = parseInt(UserIdService.getIdToken());     ///useID info from login
     const [savedBool, setSavedBool] = useState(false);    ///save bool state
     const [savedFlightId, setSavedFlightId] = useState(false);    ///save bool state
-    const [errorState, setErrorState] = useState([]);
     const deleteContext = useContext(DeleteContext);     ///declare delete context
 
     let handleDeleteSubmit = e => {
@@ -48,7 +49,7 @@ export default function DealResult(props) {
             .then( deletedResponse => {
                 deleteContext.setDeleteFlight(true);
             })
-            .catch(error => setErrorState(error));
+            .catch(error => errorContext.setErrorState(error));
     }
 
     let handleSaveSubmit = e => {
@@ -66,7 +67,7 @@ export default function DealResult(props) {
         }
         SaveService.saveFlight(flight)
             .then( savedResponse => setSavedFlightId(savedResponse.id))
-            .catch(error => setErrorState(error))
+            .catch(error => errorContext.setErrorState(error))
     }
 
 

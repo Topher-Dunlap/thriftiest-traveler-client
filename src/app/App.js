@@ -7,7 +7,8 @@ import ComponentMountService from '../service/componentMount-service';
 import ThemeContext from '../components/ThemeContext';
 import AuthContext from '../components/AuthContext';
 import DeleteContext from '../components/DeleteContext';
-import EventContext from '../components/EventContext'
+import EventContext from '../components/EventContext';
+import ErrorContext from '../components/ErrorContext';
 
 function App() {
 
@@ -33,6 +34,10 @@ function App() {
     }
 
     const [errorState, setErrorState] = useState([]);
+    const contextError = {
+        errorState: errorState,
+        setErrorState: setErrorState
+    }
 
     useEffect(() => {
             ///get user location
@@ -45,7 +50,7 @@ function App() {
                         .catch(error => setErrorState(error));
                 })
                 .catch(error => setErrorState(error));
-        }, []
+        }, [userAirport]
     );
 
     return (
@@ -53,6 +58,7 @@ function App() {
             <AuthContext.Provider value={contextAuth}>
                 <DeleteContext.Provider value={contextDelete}>
                     <EventContext.Provider value={eventContext}>
+                        <ErrorContext.Provider value={contextError}>
                         <main>
                             <NavBar/>
                             <div>
@@ -63,6 +69,7 @@ function App() {
                                 </ErrorBoundary>
                             </div>
                         </main>
+                        </ErrorContext.Provider>
                     </EventContext.Provider>
                 </DeleteContext.Provider>
             </AuthContext.Provider>

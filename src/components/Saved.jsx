@@ -4,12 +4,13 @@ import Loader from 'react-loader-spinner';
 import SavedResults from './SavedResult';
 import UserIdService from "../service/userId-token";
 import DeleteContext from "./DeleteContext";
+import ErrorContext from "./ErrorContext";
 
 export default function Saved() {
 
     const [savedFlights, setSavedFlights] = useState('');     ///useState for user location API
     const [loadingSpinner, setLoadingSpinner] = useState(false);    ///useState for loading spinner
-    const [errorState, setErrorState] = useState([]);
+    const errorContext = useContext(ErrorContext);  ///declare error context
     let user_id = UserIdService.getIdToken();    ///useID info from login
     const deleteContext = useContext(DeleteContext);    ///declare delete context
 
@@ -21,7 +22,7 @@ export default function Saved() {
                     setLoadingSpinner(false);
                     deleteContext.setDeleteFlight(false);
                 })
-                .catch(error => setErrorState(error));
+                .catch(error => errorContext.setErrorState(error));
         }, [deleteContext.deleteFlight]
     );
 
