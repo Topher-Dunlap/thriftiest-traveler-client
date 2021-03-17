@@ -24,18 +24,15 @@ export default function Deals() {
             setLoadingSpinner(true);
             DealsService.getDeals([event])    ///get disaster and terror event data
                 .then(response => {
-                    console.log("deals response: ", response)
                     if(response.data === undefined || response.data === "no price" || response.data === "no deal"){
                         setNoPriceFlight(response.data[0])
                     }
                     else{
-                        console.log("inside else: ", response)
                         setFlightDeals(flightDeals => [...flightDeals, response.data[0]]);
                     }
                     setLoadingSpinner(false);
                 })
                 .catch(error => {
-                    console.log("deals error catch", error)
                     errorContext.setErrorState(error)
                 });
         })
