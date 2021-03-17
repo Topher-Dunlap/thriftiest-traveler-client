@@ -142,12 +142,14 @@ const contextValue = {
         float: "right",
         padding: "10px",
         margin: "2rem 2rem .5rem 0rem",
+        color: "#F7C841",
     },
 
     resultsIconFlight: {
         float: "right",
         padding: "10px",
         margin: "2rem .5rem 0 0",
+        color: "#F7C841",
     },
 
     resultsDescStyle: {
@@ -190,8 +192,9 @@ const contextValue = {
     },
 
     resultsDivStyle: {
+        color: "white",
         borderRadius: "5px",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#333029",
         padding: "0 0 3rem",
         boxShadow:
             `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
