@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const EventContext = React.createContext({
     eventData: [],
 })
 
-export default EventContext
+export default EventContext;

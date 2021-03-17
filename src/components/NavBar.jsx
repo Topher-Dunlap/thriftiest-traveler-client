@@ -18,9 +18,9 @@ export default function NavBar() {
     //logged in/logged out state
     const {loggedIn, setLoggedIn} = useContext(AuthContext);
     const HandleLogoutClick = () => {
-        TokenService.clearAuthToken()
-        UserIdService.clearIdToken()
-        setLoggedIn(TokenService.hasAuthToken())
+        TokenService.clearAuthToken();
+        UserIdService.clearIdToken();
+        setLoggedIn(TokenService.hasAuthToken());
     }
 
     ///renders login or logout options depending on auth token

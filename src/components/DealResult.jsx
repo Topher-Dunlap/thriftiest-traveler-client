@@ -41,20 +41,20 @@ export default function DealResult(props) {
     const deleteContext = useContext(DeleteContext);     ///declare delete context
 
     let handleDeleteSubmit = e => {
-        e.preventDefault()
-        setSavedBool(!savedBool)
+        e.preventDefault();
+        setSavedBool(!savedBool);
         SaveService.deleteSavedFlight(user_id, savedFlightId)
             .then( deletedResponse => {
-                deleteContext.setDeleteFlight(true)
+                deleteContext.setDeleteFlight(true);
             })
             .catch(error => {
-                console.error({error})
+                console.error({error});
             })
     }
 
     let handleSaveSubmit = e => {
-        e.preventDefault()
-        setSavedBool(!savedBool)
+        e.preventDefault();
+        setSavedBool(!savedBool);
         const flight = {
             title: title,
             country_name: countryName,
@@ -66,7 +66,7 @@ export default function DealResult(props) {
             traveler_user: user_id
         }
         SaveService.saveFlight(flight)
-            .then( savedResponse => setSavedFlightId(savedResponse.id))
+            .then( savedResponse => setSavedFlightId(savedResponse.id));
     }
 
 

@@ -6,7 +6,7 @@ import RegisterTy from "./RegisterTy";
 
 export default function Register() {
 
-    const [didRegister, setDidRegister] = useState(false)
+    const [didRegister, setDidRegister] = useState(false);
 
     function registerConditional() {
         if(didRegister !== true) {

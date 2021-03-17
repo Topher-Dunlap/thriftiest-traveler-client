@@ -7,31 +7,24 @@ import DeleteContext from "./DeleteContext";
 
 export default function Saved() {
 
-    ///useState for user location API
-    const [savedFlights, setSavedFlights] = useState('');
-    ///useState for loading spinner
-    const [loadingSpinner, setLoadingSpinner] = useState(false);
-    ///useID info from login
-    let user_id = UserIdService.getIdToken()
-    ///declare delete context
-    const deleteContext = useContext(DeleteContext);
+    const [savedFlights, setSavedFlights] = useState('');     ///useState for user location API
+    const [loadingSpinner, setLoadingSpinner] = useState(false);    ///useState for loading spinner
+    let user_id = UserIdService.getIdToken();    ///useID info from login
+    const deleteContext = useContext(DeleteContext);    ///declare delete context
 
     useEffect(() => {
-            ///set spinner in motion when loading
-            setLoadingSpinner(true)
-            ///get disaster and terror event data
-            SaveService.getAllSaved(user_id)
+            setLoadingSpinner(true);
+            SaveService.getAllSaved(user_id)      ///get disaster and terror event data
                 .then(response => {
-                    setSavedFlights(response.data)
-                    setLoadingSpinner(false)
-                    deleteContext.setDeleteFlight(false)
+                    setSavedFlights(response.data);
+                    setLoadingSpinner(false);
+                    deleteContext.setDeleteFlight(false);
                 })
-                .catch(error => console.log(error))
+                .catch(error => console.log(error));
         }, [deleteContext.deleteFlight]
     );
 
     function loadResults(resultValues) {
-        console.log("savedFlights: ", savedFlights)
         if (resultValues !== '') {
             return savedFlights.map((event, idx) =>
                 <SavedResults
@@ -48,7 +41,6 @@ export default function Saved() {
                 />
             )
         }
-        return false
     }
 
     return (

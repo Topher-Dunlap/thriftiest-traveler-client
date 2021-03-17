@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 const DeleteContext = React.createContext({
     deleteFlight: "false",
     setDeleteFlight: () => {}
 })
 
-export default DeleteContext
+export default DeleteContext;

@@ -34,20 +34,17 @@ export default function SavedResult(props) {
     let departure = props.departure;
     let SavedId = props.SavedId;
 
-    ///declare delete context
-    const deleteContext = useContext(DeleteContext);
-
-    ///useID info from login
-    let user_id = UserIdService.getIdToken();
+    const deleteContext = useContext(DeleteContext);    ///declare delete context
+    let user_id = UserIdService.getIdToken();    ///useID info from login
 
     let handleDeleteSubmit = e => {
         e.preventDefault()
         SaveService.deleteSavedFlight(user_id, SavedId)
             .then( deletedResponse => {
-                deleteContext.setDeleteFlight(true)
+                deleteContext.setDeleteFlight(true);
             })
             .catch(error => {
-                console.error({error})
+                console.error({error});
             })
     }
 

@@ -13,7 +13,7 @@ export default function LoginForm() {
     const authLoginContext = useContext(AuthContext);
     const {register, errors} = useForm();
     const history = useHistory();
-    const [errorState, setErrorState] = useState("")
+    const [errorState, setErrorState] = useState("");
 
     ///context theme styling
     const context = useContext(ThemeContext);
@@ -23,8 +23,8 @@ export default function LoginForm() {
     const formInputStyle = context.formInputStyle;
 
     const handleSubmitJwtAuth = (ev) => {
-        ev.preventDefault()
-        const {email, password} = ev.target
+        ev.preventDefault();
+        const {email, password} = ev.target;
 
         AuthService.postLogin({
             email: email.value,
@@ -39,8 +39,8 @@ export default function LoginForm() {
                 history.push("/deals")
             })
             .catch(error => {
-                console.error({error})
-                setErrorState(error.error)
+                console.error({error});
+                setErrorState(error.error);
             })
     }
 

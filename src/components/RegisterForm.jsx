@@ -9,26 +9,26 @@ export default function RegisterForm(props) {
     const context = useContext(ThemeContext);
     const formStyle = context.formStyle;
     const formButtonStyle = context.formButtonStyle;
-    const centerText = context.centerText
-    const setDidRegister = props.setDidRegister
+    const centerText = context.centerText;
+    const setDidRegister = props.setDidRegister;
 
     //Register Form Error logic
-    const [isRegisterError, setIsRegisterError] = useState(false)
-    const [registerErrorMessage, setRegisterErrorMessage] = useState({})
+    const [isRegisterError, setIsRegisterError] = useState(false);
+    const [registerErrorMessage, setRegisterErrorMessage] = useState({});
     const registerErrorCondition = () => {
         if(isRegisterError === false) {
-            return false
+            return false;
         }
         else {
-            return <RegisterError registerErrorMessage={registerErrorMessage}/>
+            return <RegisterError registerErrorMessage={registerErrorMessage}/>;
         }
     }
 
     const handleRegSubmit = (ev) => {
 
         ev.preventDefault()
-        const {first_name, last_name, email, password} = ev.target
-        setIsRegisterError( false)   ///set error state back to false for new register attempt
+        const {first_name, last_name, email, password} = ev.target;
+        setIsRegisterError( false);   ///set error state back to false for new register attempt
 
         AuthApiService.postUser({
             first_name: first_name.value,
