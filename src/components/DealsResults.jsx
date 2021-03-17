@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import disaster_1 from '../img/disaster_1.jpg';
+import dealsPhoto from '../img/deals.png';
 import IconButton from '@material-ui/core/IconButton';
 import {BsBookmarkPlus} from 'react-icons/bs';
 import {IoMdAirplane} from 'react-icons/io';
@@ -63,7 +64,7 @@ export default function DealsResults(props) {
                 <img
                     style={imageStyle}
                     alt="disaster"
-                    src={disaster_1}/>
+                    src={dealsPhoto}/>
                 <div>
                     <h3 style={locationNameFloat}>Flights to {placeName}, {countryName}</h3>
                     <h4 style={titleNameFloat}>{title}</h4>
@@ -87,10 +88,10 @@ export default function DealsResults(props) {
                     <p style={descStyle}>
                         {description}
                     </p>
-                    <div style={divAddressStyle}>
-                        <h3 style={weatherMargin}>Weather in {placeName}:</h3>
-                        <p style={weatherMargin}>82 Degrees, Sunny</p>
-                    </div>
+                    {/*<div style={divAddressStyle}>*/}
+                    {/*    <h3 style={weatherMargin}>Weather in {placeName}:</h3>*/}
+                    {/*    <p style={weatherMargin}>82 Degrees, Sunny</p>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </li>

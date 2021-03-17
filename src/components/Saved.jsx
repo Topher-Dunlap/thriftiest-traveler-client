@@ -52,7 +52,7 @@ export default function Saved() {
 
     return (
         <section style={centerText}>
-            <h2 style={centerText}>Saved Flights</h2>
+            <h2 style={headerStyle}>Saved Flights</h2>
             <Loader
                 style={centerText}
                 type="TailSpin"
@@ -67,4 +67,8 @@ export default function Saved() {
 
 const centerText = {
     textAlign: "center",
+}
+
+const headerStyle = {
+    fontSize: "2rem"
 }

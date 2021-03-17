@@ -63,7 +63,7 @@ export default function Deals() {
 
     return (
         <section style={centerText}>
-            <h2 style={centerText}>Deals</h2>
+            <h1 style={headerStyle}>Deals</h1>
             {loadResults(flightDeals)}
             <Loader
                 style={centerText}
@@ -78,4 +78,8 @@ export default function Deals() {
 
 const centerText = {
     textAlign: "center",
+}
+
+const headerStyle = {
+    fontSize: "2rem"
 }

@@ -8,17 +8,17 @@ export default function LandingSection(props) {
 
     return (
         <section style={sectionPara}>
-            <p>{sectionImage}</p>
+            <img style={imgStyle} alt={"travel"} src={sectionImage}/>
             <p>{pContent}</p>
         </section>
     )
 }
 
-// const imgStyle = {
-//     height: "100%",
-//     width: "100%",
-//     margin: "0",
-// }
+const imgStyle = {
+    height: "100%",
+    width: "100%",
+    margin: "0",
+}
 
 const sectionPara = {
     margin: "4rem 2rem",

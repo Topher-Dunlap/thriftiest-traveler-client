@@ -125,6 +125,7 @@ const headerStyle = {
     color: "white",
     margin: "2rem",
     textAlign: "center",
+    fontSize: "3rem"
 }
 
 const topNav = {
