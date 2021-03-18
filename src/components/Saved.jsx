@@ -12,7 +12,7 @@ import Filter from './Filter';
 export default function Saved() {
 
 
-	const [savedFlights, setSavedFlights] = useState('');     ///for user location API
+	const [savedFlights, setSavedFlights] = useState([]);     ///for user location API
 	const [loadingSpinner, setLoadingSpinner] = useState(false);
 	const [filterSelected, setFilterSelected] = useState('');
 
@@ -54,11 +54,11 @@ export default function Saved() {
 	}
 
 	function showFilteredTernary() {
-		if(filterSelected === ''){
-			return savedFlights === '' ? 'No saved flights' : loadResults(savedFlights);
+		if(filterSelected.length === 0){
+			return savedFlights.length === 0 ? 'No saved flights' : loadResults(savedFlights);
 		}
 		else {
-			return filterSelected ? FilterService.filterResultsLowHigh(savedFlights) : FilterService.filterResultsHighLow(savedFlights);
+			return filterSelected ? FilterService.filterSavedHighLow(savedFlights) : FilterService.filterSavedLowHigh(savedFlights);
 		}
 	}
 
@@ -76,8 +76,6 @@ export default function Saved() {
 				height={80}
 				width={80}
 				visible={loadingSpinner}/>
-			{/*{filterSelected ? FilterService.filterResultsLowHigh(savedFlights) : FilterService.filterResultsHighLow(savedFlights)}*/}
-			{/*{savedFlights === '' ? 'No saved flights' : loadResults(savedFlights)}*/}
 			{showFilteredTernary()}
 		</section>
 	);
