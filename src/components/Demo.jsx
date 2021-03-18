@@ -7,7 +7,7 @@ export default function Demo() {
             <header>
                 <h2 style={headerTheme}>How to Demo</h2>
             </header>
-            <p style={paraMargin}>If you'd like to demo this app without registration please enter the following credentials:</p>
+            <p style={paraMargin}>If you would like to demo this app without registration please enter the following credentials:</p>
             <ul style={listStyle}>
                 <li>
                     Email: test@gmail.com

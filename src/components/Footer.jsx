@@ -3,9 +3,9 @@ import React from 'react';
 export default function Footer() {
 
     return (
-        <section style={footerStyle}>
+        <footer style={footerStyle}>
             <h4 style={footerText}>© 2021 Topher Dunlap | All Rights Reserved</h4>
-        </section>
+        </footer>
     )
 }
 

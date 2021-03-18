@@ -26,13 +26,16 @@ const passwordReq = {
 }
 
 const listStyle = {
-    color: "red",
+    // color: "red",
     listStylePosition: "inside",
     textAlign: "center",
     margin: "0 2rem",
+    fontSize: "1.25rem",
     padding: "2rem",
     borderColor: "black",
     borderRadius: "5px",
     backgroundColor: "#f2f2f2",
 }
+
+
 

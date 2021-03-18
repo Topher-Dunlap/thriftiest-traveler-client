@@ -34,9 +34,8 @@ export default function NavBar() {
 
     function RenderLogoutLink(loggedInLinks) {
         return (
-            <div>
-                {loggedInLinks}
                 <li>
+                    {loggedInLinks}
                     <Link
                         onClick={HandleLogoutClick}
                         style={navLinkStyle}
@@ -45,7 +44,6 @@ export default function NavBar() {
                         Logout
                     </Link>
                 </li>
-            </div>
         )
     }
 
@@ -122,7 +120,7 @@ const filterOptions = [
 ]
 
 const headerStyle = {
-    color: "white",
+    color: "#333029",
     margin: "2rem",
     textAlign: "center",
     fontSize: "3rem"

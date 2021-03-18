@@ -5,10 +5,11 @@ export default function LandingSection(props) {
     ///props
     const pContent = props.pContent;
     const sectionImage = props.sectionImage;
+    const altText = props.altText;
 
     return (
         <section style={sectionPara}>
-            <img style={imgStyle} alt={"travel"} src={sectionImage}/>
+            <img style={imgStyle} alt={altText} src={sectionImage}/>
             <p>{pContent}</p>
         </section>
     )

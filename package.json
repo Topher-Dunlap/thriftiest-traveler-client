@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.22.0",
     "react-hook-form": "^6.15.4",
     "react-router-dom": "^5.2.0",
     "reactjs-popup": "^2.0.4"
