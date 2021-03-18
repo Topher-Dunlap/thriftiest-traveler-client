@@ -52,6 +52,7 @@ Deals:
 * JWT
 * Hooks
 * CSS
+* ESLint
 
 ## Features
 
