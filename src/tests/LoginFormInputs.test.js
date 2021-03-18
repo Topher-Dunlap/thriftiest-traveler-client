@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginFormInputs from '../components/LoginFormInputs';
 
-describe(`LoginFormInputs component`, () => {
+describe('LoginFormInputs component', () => {
 
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
+	it('renders without crashing', () => {
+		const div = document.createElement('div');
 
-        ReactDOM.render(
-            <LoginFormInputs/>,
-            div
-        );
-        ReactDOM.unmountComponentAtNode(div);
-    })
+		ReactDOM.render(
+			<LoginFormInputs/>,
+			div
+		);
+		ReactDOM.unmountComponentAtNode(div);
+	});
 
-})
+});

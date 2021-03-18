@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EventContext = React.createContext({
-    eventData: [],
-})
+	eventData: [],
+});
 
 export default EventContext;

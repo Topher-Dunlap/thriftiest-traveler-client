@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Landing from '../components/Landing';
 
-describe(`Landing component`, () => {
+describe('Landing component', () => {
 
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
+	it('renders without crashing', () => {
+		const div = document.createElement('div');
 
-        ReactDOM.render(
-                <Landing/>,
-            div
-        );
-        ReactDOM.unmountComponentAtNode(div);
-    })
+		ReactDOM.render(
+			<Landing/>,
+			div
+		);
+		ReactDOM.unmountComponentAtNode(div);
+	});
 
-})
+});

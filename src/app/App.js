@@ -12,202 +12,202 @@ import ErrorContext from '../components/ErrorContext';
 
 function App() {
 
-    ///useState for user location API
-    const [userAirport, setUserAirport] = useState('');
+	///useState for user location API
+	const [userAirport, setUserAirport] = useState('');
 
-    ///useState for event data
-    const [eventData, setEventData] = useState([]);
-    const eventContext = {eventData: eventData}
+	///useState for event data
+	const [eventData, setEventData] = useState([]);
+	const eventContext = {eventData: eventData};
 
-    //login state //login context
-    const [loggedIn, setLoggedIn] = useState(false);
-    const contextAuth = {
-        loggedIn: loggedIn,
-        setLoggedIn: setLoggedIn,
-    }
+	//login state //login context
+	const [loggedIn, setLoggedIn] = useState(false);
+	const contextAuth = {
+		loggedIn: loggedIn,
+		setLoggedIn: setLoggedIn,
+	};
 
-    ///useState for deleting saved flight
-    const [deleteFlight, setDeleteFlight] = useState(false);
-    const contextDelete = {
-        deleteFlight: deleteFlight,
-        setDeleteFlight: setDeleteFlight
-    }
+	///useState for deleting saved flight
+	const [deleteFlight, setDeleteFlight] = useState(false);
+	const contextDelete = {
+		deleteFlight: deleteFlight,
+		setDeleteFlight: setDeleteFlight
+	};
 
-    const [errorState, setErrorState] = useState([]);
-    const contextError = {
-        errorState: errorState,
-        setErrorState: setErrorState
-    }
+	const [errorState, setErrorState] = useState([]);
+	const contextError = {
+		errorState: errorState,
+		setErrorState: setErrorState
+	};
 
-    useEffect(() => {
-            ///get user location
-            ComponentMountService.getUserLocation()
-                .then(locationResponse => {
-                    ComponentMountService.getUserAirport(locationResponse.data.city)
-                        .then(airportDataResponse => {
-                            setUserAirport(airportDataResponse.data)
-                        })
-                        .catch(error => setErrorState(error));
-                })
-                .catch(error => setErrorState(error));
-        }, [userAirport]
-    );
+	useEffect(() => {
+		///get user location
+		ComponentMountService.getUserLocation()
+			.then(locationResponse => {
+				ComponentMountService.getUserAirport(locationResponse.data.city)
+					.then(airportDataResponse => {
+						setUserAirport(airportDataResponse.data);
+					})
+					.catch(error => setErrorState(error));
+			})
+			.catch(error => setErrorState(error));
+	}, [userAirport]
+	);
 
-    return (
-        <ThemeContext.Provider value={contextValue}>
-            <AuthContext.Provider value={contextAuth}>
-                <DeleteContext.Provider value={contextDelete}>
-                    <EventContext.Provider value={eventContext}>
-                        <ErrorContext.Provider value={contextError}>
-                        <main>
-                            <NavBar/>
-                            <div>
-                                <ErrorBoundary>
-                                    <NavRoutes
-                                        userAirport={userAirport}/>
-                                    <Footer/>
-                                </ErrorBoundary>
-                            </div>
-                        </main>
-                        </ErrorContext.Provider>
-                    </EventContext.Provider>
-                </DeleteContext.Provider>
-            </AuthContext.Provider>
-        </ThemeContext.Provider>
-    );
+	return (
+		<ThemeContext.Provider value={contextValue}>
+			<AuthContext.Provider value={contextAuth}>
+				<DeleteContext.Provider value={contextDelete}>
+					<EventContext.Provider value={eventContext}>
+						<ErrorContext.Provider value={contextError}>
+							<main>
+								<NavBar/>
+								<div>
+									<ErrorBoundary>
+										<NavRoutes
+											userAirport={userAirport}/>
+										<Footer/>
+									</ErrorBoundary>
+								</div>
+							</main>
+						</ErrorContext.Provider>
+					</EventContext.Provider>
+				</DeleteContext.Provider>
+			</AuthContext.Provider>
+		</ThemeContext.Provider>
+	);
 }
 
 export default App;
 
 const contextValue = {
-    centerText: {
-        textAlign: "center",
-    },
+	centerText: {
+		textAlign: 'center',
+	},
 
-    fontColor: {
-        color: "white",
-    },
+	fontColor: {
+		color: 'white',
+	},
 
-    formInputStyle: {
-        width: "100%",
-        padding: "12px 20px",
-        margin: "8px 0",
-        display: "inline-block",
-        border: "1px solid #ccc",
-        borderRadius: "4px",
-        boxSizing: "border-box",
-    },
+	formInputStyle: {
+		width: '100%',
+		padding: '12px 20px',
+		margin: '8px 0',
+		display: 'inline-block',
+		border: '1px solid #ccc',
+		borderRadius: '4px',
+		boxSizing: 'border-box',
+	},
 
-    formElementSpacing: {
-        margin: "0px 10px",
-        textAlign: "left",
-    },
+	formElementSpacing: {
+		margin: '0px 10px',
+		textAlign: 'left',
+	},
 
-    formStyle: {
-        borderRadius: "5px",
-        backgroundColor: "#f2f2f2",
-        margin: "4rem 4rem 6rem 4rem",
-        padding: "1rem 2rem 2rem",
-    },
+	formStyle: {
+		borderRadius: '5px',
+		backgroundColor: '#f2f2f2',
+		margin: '4rem 4rem 6rem 4rem',
+		padding: '1rem 2rem 2rem',
+	},
 
-    formButtonStyle: {
-        width: "100%",
-        backgroundColor: "#333029",
-        color: "white",
-        padding: "14px 20px",
-        margin: "8px 0",
-        border: "none",
-        borderRadius: "4px",
-        cursor: "pointer",
-    },
+	formButtonStyle: {
+		width: '100%',
+		backgroundColor: '#333029',
+		color: 'white',
+		padding: '14px 20px',
+		margin: '8px 0',
+		border: 'none',
+		borderRadius: '4px',
+		cursor: 'pointer',
+	},
 
-    navLinkStyle: {
-        color: "white",
-        textDecoration: "none",
-    },
+	navLinkStyle: {
+		color: 'white',
+		textDecoration: 'none',
+	},
 
-    resultsClearFloat: {
-        clear: "left"
-    },
+	resultsClearFloat: {
+		clear: 'left'
+	},
 
-    resultsWeatherMargin: {
-        margin: "0 .5rem 0"
-    },
+	resultsWeatherMargin: {
+		margin: '0 .5rem 0'
+	},
 
-    resultsLocationNameFloat: {
-        margin: "2rem 2rem .5rem",
-    },
+	resultsLocationNameFloat: {
+		margin: '2rem 2rem .5rem',
+	},
 
-    resultsTitleNameFloat: {
-        margin: "0rem 2rem .5rem",
-        float: "left",
-        fontStyle: "italic",
-    },
+	resultsTitleNameFloat: {
+		margin: '0rem 2rem .5rem',
+		float: 'left',
+		fontStyle: 'italic',
+	},
 
-    resultsIconBookFloat: {
-        float: "right",
-        padding: "10px",
-        margin: "2rem 2rem .5rem 0rem",
-        color: "#F7C841",
-    },
+	resultsIconBookFloat: {
+		float: 'right',
+		padding: '10px',
+		margin: '2rem 2rem .5rem 0rem',
+		color: '#F7C841',
+	},
 
-    resultsIconFlight: {
-        float: "right",
-        padding: "10px",
-        margin: "2rem .5rem 0 0",
-        color: "#F7C841",
-    },
+	resultsIconFlight: {
+		float: 'right',
+		padding: '10px',
+		margin: '2rem .5rem 0 0',
+		color: '#F7C841',
+	},
 
-    resultsDescStyle: {
-        margin: "2rem 2rem .5rem"
-    },
+	resultsDescStyle: {
+		margin: '2rem 2rem .5rem'
+	},
 
-    resultsHeaderStyle: {
-        margin: "7rem 0 0 2rem",
-        fontSize: "2.5rem",
-    },
+	resultsHeaderStyle: {
+		margin: '7rem 0 0 2rem',
+		fontSize: '2.5rem',
+	},
 
-    resultsDateStyle: {
-        margin: "0 0 0 2rem",
-        fontStyle: "italic"
-    },
+	resultsDateStyle: {
+		margin: '0 0 0 2rem',
+		fontStyle: 'italic'
+	},
 
 
-    resultsImageStyle: {
-        width: "100%",
-        height: "100%",
-        borderRadius: "5px 5px 0px 0px",
-    },
+	resultsImageStyle: {
+		width: '100%',
+		height: '100%',
+		borderRadius: '5px 5px 0px 0px',
+	},
 
-    resultsDivAddressStyle: {
-        display: "flex",
-        textAlign: "left",
-        padding: "0",
-        margin: "3rem 2rem 0",
-        height: "75%",
-    },
+	resultsDivAddressStyle: {
+		display: 'flex',
+		textAlign: 'left',
+		padding: '0',
+		margin: '3rem 2rem 0',
+		height: '75%',
+	},
 
-    resultsStyle: {
-        listStyleType: "none",
-        textAlign: "left",
-        padding: "2rem",
-        margin: "4rem auto",
-        height: "20%",
-        width: "75%",
-        borderRadius: "5px",
-    },
+	resultsStyle: {
+		listStyleType: 'none',
+		textAlign: 'left',
+		padding: '2rem',
+		margin: '4rem auto',
+		height: '20%',
+		width: '75%',
+		borderRadius: '5px',
+	},
 
-    resultsDivStyle: {
-        color: "white",
-        borderRadius: "5px",
-        backgroundColor: "#333029",
-        padding: "0 0 3rem",
-        boxShadow:
+	resultsDivStyle: {
+		color: 'white',
+		borderRadius: '5px',
+		backgroundColor: '#333029',
+		padding: '0 0 3rem',
+		boxShadow:
             `0 2.8px 1.2px rgba(0, 0, 0, 0.034),
         0 6.7px 2.3px rgba(0, 0, 0, 0.048),
         0 12.5px 4px rgba(0, 0, 0, 0.06),
         0 22.3px 6.9px rgba(0, 0, 0, 0.072),
         0 41.8px 8.4px rgba(0, 0, 0, 0.086),
         0 100px 100px rgba(0, 0, 0, 0.12)`
-    },
-}
+	},
+};

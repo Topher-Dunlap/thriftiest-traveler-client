@@ -1,6 +1,6 @@
 {
     "env": {
-        "browser": true,
+//        "browser": true,
         "es2021": true,
         "node": true
     },
@@ -24,6 +24,8 @@
         }
     },
     "rules": {
+        "react/prop-types": 0,
+        "no-unused-vars": 0,
         "indent": [
             "error",
             "tab"

@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function NoteFoundPage() {
 
-    return (
-        <section>
+	return (
+		<section>
             Page Note Found
-        </section>
-    )
+		</section>
+	);
 
 }

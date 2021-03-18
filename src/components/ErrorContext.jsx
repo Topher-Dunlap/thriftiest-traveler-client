@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ErrorContext = React.createContext({
-    loggedInUser: "false",
-    setLoggedIn: () => {}
-})
+	loggedInUser: 'false',
+	setLoggedIn: () => {}
+});
 
 export default ErrorContext;
