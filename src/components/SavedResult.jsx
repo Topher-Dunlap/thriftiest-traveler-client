@@ -35,8 +35,8 @@ export default function SavedResult(props) {
 	let departure = props.departure;
 	let SavedId = props.SavedId;
 
-	const deleteContext = useContext(DeleteContext);    ///declare delete context
-	const errorContext = useContext(ErrorContext);  ///declare error context
+	const deleteContext = useContext(DeleteContext);
+	const errorContext = useContext(ErrorContext);
 	let user_id = UserIdService.getIdToken();    ///useID info from login
 
 	let handleDeleteSubmit = e => {

@@ -15,18 +15,15 @@ function App() {
 	///useState for user location API
 	const [userAirport, setUserAirport] = useState('');
 
-	///useState for event data
 	const [eventData, setEventData] = useState([]);
 	const eventContext = {eventData: eventData};
 
-	//login state //login context
 	const [loggedIn, setLoggedIn] = useState(false);
 	const contextAuth = {
 		loggedIn: loggedIn,
 		setLoggedIn: setLoggedIn,
 	};
 
-	///useState for deleting saved flight
 	const [deleteFlight, setDeleteFlight] = useState(false);
 	const contextDelete = {
 		deleteFlight: deleteFlight,
@@ -126,6 +123,11 @@ const contextValue = {
 		textDecoration: 'none',
 	},
 
+	sectionHeaderStyle: {
+		margin: '6rem 0 0 0',
+		fontSize: '2.5rem',
+	},
+
 	resultsClearFloat: {
 		clear: 'left'
 	},
@@ -163,12 +165,12 @@ const contextValue = {
 	},
 
 	resultsHeaderStyle: {
-		margin: '7rem 0 0 2rem',
+		margin: '6rem 0 0 2rem',
 		fontSize: '2.5rem',
 	},
 
 	resultsDateStyle: {
-		margin: '0 0 0 2rem',
+		margin: '0 2rem 0 2rem',
 		fontStyle: 'italic'
 	},
 
@@ -209,5 +211,17 @@ const contextValue = {
         0 22.3px 6.9px rgba(0, 0, 0, 0.072),
         0 41.8px 8.4px rgba(0, 0, 0, 0.086),
         0 100px 100px rgba(0, 0, 0, 0.12)`
+	},
+
+	resultFilterIconStyle: {
+		margin: '0 auto',
+		textAlign: 'center',
+		display: 'inlineBlock',
+	},
+
+	resultFilterTextStyle: {
+		textAlign: 'center',
+		margin: '2rem 2rem .5rem 2rem',
+		display: 'inlineBlock',
 	},
 };

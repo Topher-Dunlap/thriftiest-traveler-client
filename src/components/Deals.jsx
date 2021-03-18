@@ -1,16 +1,24 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {BsFilterRight} from 'react-icons/bs';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
 import DealsResults from './DealResult';
 import ComponentMountService from '../service/componentMount-service';
 import ErrorContext from './ErrorContext';
+import IconButton from '@material-ui/core/IconButton';
+import ThemeContext from './ThemeContext';
 
 export default function Deals() {
 
-	const [flightDeals, setFlightDeals] = useState([]);     ///useState for user location API
-	const [loadingSpinner, setLoadingSpinner] = useState(true);    ///useState for loading spinner
+	const context = useContext(ThemeContext);
+	const filterStyle = context.resultFilterIconStyle;
+	const headerStyle = context.sectionHeaderStyle;
+
+	const [flightDeals, setFlightDeals] = useState([]);     ///user location API
+	const [loadingSpinner, setLoadingSpinner] = useState(true);
+	const [filterSelected, setFilterSelected] = useState(false);
 	const [noPriceFlight, setNoPriceFlight] = useState([]);
-	const errorContext = useContext(ErrorContext);  ///declare error context
+	const errorContext = useContext(ErrorContext);
 
 	useEffect(() => {
 		ComponentMountService.getEvents()
@@ -58,7 +66,12 @@ export default function Deals() {
 
 	return (
 		<section style={centerText}>
-			<h1 style={headerStyle}>Deals</h1>
+			<div>
+				<h1 style={headerStyle}>Deals</h1>
+				<IconButton style={filterStyle}>
+					<BsFilterRight size={25}/>
+				</IconButton>
+			</div>
 			{loadResults(flightDeals)}
 			<Loader
 				style={centerText}
@@ -74,9 +87,4 @@ export default function Deals() {
 
 const centerText = {
 	textAlign: 'center',
-};
-
-const headerStyle = {
-	fontSize: '2rem',
-	color: '#333029',
 };

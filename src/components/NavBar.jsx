@@ -34,7 +34,7 @@ export default function NavBar() {
 
 	function RenderLogoutLink(loggedInLinks) {
 		return (
-			<li>
+			<ul style={ulStyle}>
 				{loggedInLinks}
 				<Link
 					onClick={HandleLogoutClick}
@@ -43,7 +43,7 @@ export default function NavBar() {
 				>
                         Logout
 				</Link>
-			</li>
+			</ul>
 		);
 	}
 
@@ -140,4 +140,10 @@ const topNavLeft = {
 	textDecoration: 'none',
 	backgroundColor: '#333029',
 	color: 'white',
+};
+
+const ulStyle = {
+	listStyleType: 'none',
+	margin: 'auto',
+	padding: '0',
 };

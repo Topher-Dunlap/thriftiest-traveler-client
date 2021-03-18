@@ -1,8 +1,7 @@
 import React, {useContext, useState} from 'react';
 import dealsPhoto from '../img/deals.png';
 import IconButton from '@material-ui/core/IconButton';
-import {BsBookmarkPlus} from 'react-icons/bs';
-import {BsBookmarkDash} from 'react-icons/bs';
+import {BsBookmarkPlus, BsBookmarkDash} from 'react-icons/bs';
 import {IoMdAirplane} from 'react-icons/io';
 import ThemeContext from './ThemeContext';
 import DeleteContext from './DeleteContext';

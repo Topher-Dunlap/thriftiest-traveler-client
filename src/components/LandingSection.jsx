@@ -24,4 +24,5 @@ const imgStyle = {
 const sectionPara = {
 	margin: '4rem 2rem',
 	textAlign: 'center',
+	fontSize: '1.25rem',
 };

@@ -1,18 +1,27 @@
 import React, {useContext, useEffect, useState} from 'react';
 import SaveService from '../service/save-service';
+import {FcEmptyFilter} from 'react-icons/fc';
 import Loader from 'react-loader-spinner';
 import SavedResults from './SavedResult';
 import UserIdService from '../service/userId-token';
 import DeleteContext from './DeleteContext';
 import ErrorContext from './ErrorContext';
+import IconButton from '@material-ui/core/IconButton';
+import ThemeContext from './ThemeContext';
+import Filter from './Filter';
 
 export default function Saved() {
 
-	const [savedFlights, setSavedFlights] = useState('');     ///useState for user location API
-	const [loadingSpinner, setLoadingSpinner] = useState(false);    ///useState for loading spinner
-	const errorContext = useContext(ErrorContext);  ///declare error context
+
+	const [savedFlights, setSavedFlights] = useState('');     ///for user location API
+	const [loadingSpinner, setLoadingSpinner] = useState(false);
+	const [filterSelected, setFilterSelected] = useState(false);
+
+	const errorContext = useContext(ErrorContext);
+	const deleteContext = useContext(DeleteContext);
+	const context = useContext(ThemeContext);
+	const headerStyle = context.sectionHeaderStyle;
 	let user_id = UserIdService.getIdToken();    ///useID info from login
-	const deleteContext = useContext(DeleteContext);    ///declare delete context
 
 	useEffect(() => {
 		setLoadingSpinner(true);
@@ -47,7 +56,8 @@ export default function Saved() {
 
 	return (
 		<section style={centerText}>
-			<h2 style={headerStyle}>Saved Deals</h2>
+			<h1 style={headerStyle}>Saved Deals</h1>
+			<Filter/>
 			<Loader
 				style={centerText}
 				type="TailSpin"
@@ -64,7 +74,3 @@ const centerText = {
 	textAlign: 'center',
 };
 
-const headerStyle = {
-	fontSize: '2rem',
-	color: '#333029',
-};
