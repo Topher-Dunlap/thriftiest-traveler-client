@@ -8,9 +8,10 @@ export default function LandingSection(props) {
     const altText = props.altText;
 
     return (
-        <section className='sectionPara'>
+        <section className='sectionStyle'>
             <img className='imgStyle' alt={altText} src={sectionImage}/>
-            <p>{pContent}</p>
+            <p className='paragraphStyle'>{pContent}</p>
+            <hr className='landingHrStyle'/>
         </section>
     );
 }

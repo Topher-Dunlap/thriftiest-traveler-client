@@ -9,7 +9,7 @@ export default function Demo() {
 				<h2 className='headerTheme'>How to Demo</h2>
 			</header>
 			<p className='paraMargin'>If you would like to demo this app without registration please enter the following credentials:</p>
-			<ul className='demolistStyle'>
+			<ul className='demoListStyle'>
 				<li>
                     Email: test@gmail.com
 				</li>

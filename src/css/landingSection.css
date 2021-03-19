@@ -4,8 +4,16 @@
 	margin: 0;
 }
 
-.sectionPara {
-	margin: 4rem 2rem;
+.paragraphStyle {
+	margin: 2rem;
+}
+
+.sectionStyle {
+	margin: 0 0 4rem 0;
 	text-align: center;
 	font-size: 1.25rem;
+}
+
+.landingHrStyle {
+	width: 300px;
 }
