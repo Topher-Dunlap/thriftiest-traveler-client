@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import ThemeContext from './ThemeContext';
+import '../css/theme.css';
 
 export default function NavLinks(props) {
 
@@ -8,14 +8,10 @@ export default function NavLinks(props) {
 	const routeName = props.routeName;
 	const routePath = props.routePath;
 
-	//Context Theme
-	const context = useContext(ThemeContext);
-	const navLinkStyle = context.navLinkStyle;
-
 	return (
 		<li>
 			<Link
-				style={navLinkStyle}
+				className='navLinkStyle'
 				to={routePath}>
 				{routeName}
 			</Link>

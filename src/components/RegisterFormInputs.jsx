@@ -1,13 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {useForm} from 'react-hook-form';
-import ThemeContext from './ThemeContext';
+import '../css/theme.css';
 
 export default function RegisterFormInputs(props) {
-
-	///context theme styling
-	const context = useContext(ThemeContext);
-	const formElementSpacing = context.formElementSpacing;
-	const formInputStyle = context.formInputStyle;
 
 	///props
 	const fieldLabel = props.fieldLabel;
@@ -19,12 +14,12 @@ export default function RegisterFormInputs(props) {
 		<div>
 			<label
 				htmlFor={inputName}
-				style={formElementSpacing}>
+				className='formElementSpacing'>
 				{fieldLabel}
 			</label>
 			<input
 				ref={register({required: true})}
-				style={formInputStyle}
+				className='formInputStyle'
 				type={typeName}
 				name={inputName}
 				id={inputName}/>

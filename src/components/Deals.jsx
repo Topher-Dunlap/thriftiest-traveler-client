@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {BsFilterRight} from 'react-icons/bs';
 import DealsService from '../service/deals-service';
 import Loader from 'react-loader-spinner';
 import DealsResults from './DealResult';
@@ -7,14 +6,9 @@ import FilterService from '../service/filter-service';
 import Filter from './Filter';
 import ComponentMountService from '../service/componentMount-service';
 import ErrorContext from './ErrorContext';
-import IconButton from '@material-ui/core/IconButton';
-import ThemeContext from './ThemeContext';
+import '../css/theme.css';
 
 export default function Deals() {
-
-    const context = useContext(ThemeContext);
-    const filterStyle = context.resultFilterIconStyle;
-    const headerStyle = context.sectionHeaderStyle;
 
     const [flightDeals, setFlightDeals] = useState([]);     ///user location API
     const [loadingSpinner, setLoadingSpinner] = useState(true);
@@ -67,25 +61,26 @@ export default function Deals() {
 
     function showFilteredTernary() {
         if (!loadingSpinner) {
-            if(filterSelected === '') {
+            if (filterSelected === '') {
                 return flightDeals.length === 0 ? 'No Deals' : loadResults(flightDeals);
-            }
-            else {
+            } else {
                 return filterSelected ? FilterService.filterDealsHighLow(flightDeals) : FilterService.filterDealsLowHigh(flightDeals);
             }
         }
     }
 
     return (
-        <section style={centerText}>
-            <h1 style={headerStyle}>Deals</h1>
+        <section className='centerText'>
+            <h1 className='sectionHeaderStyle'>
+                Deals
+            </h1>
             <Filter
                 setFilterSelected={setFilterSelected}
                 filterSelected={filterSelected}
             />
             {showFilteredTernary()}
             <Loader
-                style={centerText}
+                className='centerText'
                 type="TailSpin"
                 color="grey"
                 height={80}
@@ -96,6 +91,3 @@ export default function Deals() {
     );
 }
 
-const centerText = {
-    textAlign: 'center',
-};

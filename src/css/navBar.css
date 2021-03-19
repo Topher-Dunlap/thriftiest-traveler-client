@@ -1,0 +1,28 @@
+.headerStyle {
+	color: #333029;
+	margin: 2rem;
+	text-align: center;
+	font-size: 3rem;
+}
+
+.topNav {
+	background-color: #f7c841;
+	display: flex;
+	width: auto;
+}
+
+.topNavLeft {
+	margin: 0;
+	list-style-type: none;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	background-color: #333029;
+	color: white;
+}
+
+.ulStyle {
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+}

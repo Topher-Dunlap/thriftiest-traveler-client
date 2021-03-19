@@ -1,0 +1,11 @@
+.hrStyle {
+	width: 150px;
+	margin-top: 2rem;
+}
+
+.buttonStyle {
+	border-style: solid;
+	border-color: #333029;
+	border-width: thin;
+	margin-bottom: 2rem;
+}

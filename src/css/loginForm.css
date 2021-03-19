@@ -1,0 +1,12 @@
+.headerStyle {
+	text-align: center;
+}
+
+.errorMessageStyling {
+	color: red;
+	text-align: center;
+}
+
+.tokenColor {
+	color: green;
+}

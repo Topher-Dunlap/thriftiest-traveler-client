@@ -1,13 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import {FcEmptyFilter} from 'react-icons/fc';
-import ThemeContext from './ThemeContext';
+import '../css/filter.css';
+import '../css/theme.css';
 
 export default function Filter(props) {
 
-    const context = useContext(ThemeContext);
-    const filterIconStyle = context.resultFilterIconStyle;
-    const filterTextStyle = context.resultFilterTextStyle;
     let setFilterSelected = props.setFilterSelected;
     let filterSelected = props.filterSelected;
 
@@ -18,29 +16,22 @@ export default function Filter(props) {
 
     return (
         <div>
-            <hr style={hrStyle}/>
-            <p style={filterTextStyle}>Filter Price</p>
-            <div style={filterIconStyle}>
-                <IconButton
-                    onClick={handleFilter}
-                    style={buttonStyle}
-                >
-                    <FcEmptyFilter
-                        size={25}/>
+            <hr className='hrStyle'/>
+            <p className="resultFilterTextStyle">Filter Price</p>
+            <div>
+                <IconButton onClick={handleFilter} style={buttonStyle}>
+                    <FcEmptyFilter size={25}/>
                 </IconButton>
             </div>
         </div>
     );
 }
 
-const hrStyle = {
-  width: '150px',
-    marginTop: '2rem',
-};
-
 const buttonStyle = {
     borderStyle: 'solid',
     borderColor: '#333029',
     borderWidth: 'thin',
+    marginBottom: '2rem',
 };
+
 

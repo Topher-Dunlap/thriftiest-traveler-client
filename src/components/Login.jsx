@@ -1,14 +1,10 @@
-import React, {useContext} from 'react';
-import ThemeContext from './ThemeContext';
+import React from 'react';
 import LoginForm from './LoginForm';
 
 export default function Login() {
 
-	const context = useContext(ThemeContext);
-	const theme = context.theme;
-
 	return (
-		<section style={theme}>
+		<section>
 			<LoginForm />
 		</section>
 	);

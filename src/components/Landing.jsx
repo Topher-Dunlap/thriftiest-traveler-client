@@ -30,8 +30,8 @@ export default function Landing() {
 
 const sectionData = [
 	{
-		pContent: `Welcome to Thriftiest Traveler! Login, scroll through the newest flight deals, save your favorite flights
-		or navigate to Orbitz.com to book your travel using the accessible buttons on each deal card.
+		pContent: `Welcome to Thriftiest Traveler! Login, scroll and filter the newest flight deals and save your favorite flights.
+		Navigate to Orbitz.com to book your travel using the accessible buttons on each deal card.
 		Thriftiest Traveler shows you the best deals on travel in areas that have recently experienced a 
         disaster or terrorist related event. The app will automatically determine your nearest airport 
         and display the lowest flight prices to event locations as well as the carrier and date for the estimated price`,

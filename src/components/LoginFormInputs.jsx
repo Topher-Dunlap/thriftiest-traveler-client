@@ -1,13 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {useForm} from 'react-hook-form';
-import ThemeContext from './ThemeContext';
+import '../css/theme.css';
 
 export default function LoginFormInput(props) {
-
-	///context theme
-	const context = useContext(ThemeContext);
-	const formElementSpacing = context.formElementSpacing;
-	const formInputStyle = context.formInputStyle;
 
 	///props
 	const fieldLabel = props.fieldLabel;
@@ -18,16 +13,16 @@ export default function LoginFormInput(props) {
 	return(
 		<div>
 			<label
-				style={formElementSpacing}>
+				className='formElementSpacing'>
 				{fieldLabel}
 			</label>
 			<input
 				ref={register({required: true, minLength: 2})}
-				style={formInputStyle}
+				className='formInputStyle'
 				name={inputName}
 				type={typeName}/>
 			<br/>
-			{errors.inputName && <p style={{color: 'red'}}>This is required</p>}
+			{errors.inputName && <p className='incorrectColor'>This is required</p>}
 		</div>
 	);
 }

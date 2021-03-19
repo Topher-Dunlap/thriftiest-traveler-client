@@ -1,18 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import ThemeContext from './ThemeContext';
+import '../css/theme.css';
 
 export default function LoginLinks(props) {
 
-	const context = useContext(ThemeContext);
-	const navLinkStyle = context.navLinkStyle;
 	const routeName = props.routeName;
 	const routePath = props.routePath;
 
 	return (
 		<li>
 			<Link
-				style={navLinkStyle}
+				className='navLinkStyle'
 				to={routePath}>
 				{routeName}
 			</Link>

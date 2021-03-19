@@ -1,0 +1,18 @@
+.footerText {
+	margin: 0;
+}
+
+.footerStyle {
+	font-size: small;
+	padding: 1rem 0 0;
+	text-align: center;
+	background-color: #333029;
+	clear: both;
+	color: white;
+	height: 30px;
+	margin-top: 25%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
