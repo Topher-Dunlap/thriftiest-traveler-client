@@ -34,7 +34,7 @@ const sectionData = [
 		Navigate to Orbitz.com to book your travel using the accessible buttons on each deal card.
 		Thriftiest Traveler shows you the best deals on travel in areas that have recently experienced a 
         disaster or terrorist related event. The app will automatically determine your nearest airport 
-        and display the lowest flight prices to event locations as well as the carrier and date for the estimated price`,
+        and display the lowest flight prices to event locations as well as the carrier and date for the estimated price.`,
 		sectionImage: mainPhoto,
 		altText: 'backpacking',
 	},
